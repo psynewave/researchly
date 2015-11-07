@@ -76,7 +76,7 @@ export default class App extends Component {
   render() {
 
     return (
-      <MarketCopy />
+      <MarketCopy login={this.showLock}/>
     );
   }
 }
