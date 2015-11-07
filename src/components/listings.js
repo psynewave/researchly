@@ -52,7 +52,7 @@ export default class Listings extends Component {
 
   selectComp(e) {
     let state = this.state;
-    let apn = $(e.target).parents('.taxitem').data('apn');
+    let apn = String($(e.target).parents('.taxitem').data('apn'));
     let comps = Store.Comps().slice();
     let compIndex = _.indexOf(comps, apn);
 
