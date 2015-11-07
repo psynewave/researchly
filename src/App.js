@@ -76,13 +76,10 @@ export default class App extends Component {
   render() {
 
     return (
-<<<<<<< HEAD
       <div>Hello World
       <ChatBox></ChatBox>
       </div>
-=======
       <MarketCopy login={this.showLock}/>
->>>>>>> 7867ff7773b12037d79d93cff0130fdcace471b2
     );
   }
 }
