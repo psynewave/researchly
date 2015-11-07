@@ -15,7 +15,6 @@ export default class LoggedInContent extends React.Component {
     return (
       <AppBody>
         <Header profile={props.profile} login={props.login}/>
-        <ChatBox></ChatBox>
         <Footer copyYear={_state.copyYear} />
       </AppBody>
     );
