@@ -3,11 +3,7 @@ import _ from 'underscore';
 import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
 import '../css/style.css';
 import React, { Component } from 'react';
-import AppBody from './components/appBody';
-import Footer from './components/footer';
-import MarketCopy from './components/marketcopy';
-import Header from './components/headerloggedout';
-import ChatBox from './chat/ChatBox'
+import LoggedOutContent from './components/loggedoutcontent';
 
 window.React = React;
 window.$ = $;
@@ -82,12 +78,7 @@ export default class App extends Component {
     let state = this.state;
 
     return (
-      <AppBody>
-        <Header login={this.showLock}/>
-        <MarketCopy hello="hello" login={this.showLock}/>
-        <ChatBox></ChatBox>
-        <Footer copyYear={state.copyYear} />
-      </AppBody>
+      <LoggedOutContent state={this.state} login={this.showLock}/>
     );
   }
 }
