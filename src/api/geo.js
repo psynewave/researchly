@@ -17,6 +17,7 @@ class GeoAPI {
                 var lat = result.results[0].geometry.location.lat;
                 var lng = result.results[0].geometry.location.lng;
                 var payload={
+                  Loc:loc,
                   Zip:'',
                   City:'',
                   County:'',
