@@ -3,7 +3,7 @@ import _ from 'underscore';
 import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
 import '../css/style.css';
 import React, { Component } from 'react';
-
+import ChatBox from './chat/ChatBox'
 window.React = React;
 window.$ = $;
 window.jQuery = $;
@@ -20,7 +20,9 @@ export default class App extends Component {
   render() {
 
     return (
-      <div>Hello World</div>
+      <div>Hello World
+      <ChatBox></ChatBox>
+      </div>
     );
   }
 }
