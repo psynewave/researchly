@@ -17,7 +17,7 @@ export default class LoggedInContent extends React.Component {
       <AppBody>
         <Header profile={props.profile} login={props.login}/>
         <TrendsOutput />
-        <ChatBox></ChatBox>
+        <ChatBox profile={props.profile}></ChatBox>
       </AppBody>
     );
   }

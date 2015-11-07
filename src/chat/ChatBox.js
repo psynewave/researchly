@@ -25,12 +25,13 @@ export default class ChatBox extends React.Component {
     });
   }
   render(){
+    let props = this.props;
     return (
       <div id="paperChat" className="ui grid">
         <div className="eight wide column">
           <div className="ui segment">
-            <NewChat chats={ this.state.messages } />
-            <Container />
+            <NewChat profile={props.profile} chats={ this.state.messages } />
+            <Container  />
           </div>
         </div>
         <div className="eight wide column">
