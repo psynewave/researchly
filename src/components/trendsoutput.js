@@ -5,6 +5,7 @@ import Column from './column';
 import Container from './container';
 import Segment from './segment';
 import Listings from './listings';
+import Comps from './comps';
 export default class TrendsOutput extends React.Component {
   render () {
 
@@ -16,7 +17,7 @@ export default class TrendsOutput extends React.Component {
           <p>Trends will go here</p>
         </Column>
         <Column id="tax-listings" styles="padded-right six">
-          <p>comps will go in here</p>
+          <Comps />
           <Listings />
         </Column>
       </Grid>
