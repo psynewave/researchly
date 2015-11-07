@@ -272,16 +272,24 @@ header .ui.grid.inverted.menu {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#search-form .item {
+div#search-form .item {
     color: black!important;
 }
 
-#search-form .ui.popup .header {
-    color: black!important;
-    padding: 0;
+header .ui.popup {
+    width: 100%;
 }
 
-#search-form .ui.popup .segments {
+#app header #searchAssist .header {
+  padding-top: 0;
+  padding-bottom: 0;
+  color: black;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#searchAssist .segments {
   border: 0;
   box-shadow: none;
   margin: 0;
@@ -289,7 +297,7 @@ header .ui.grid.inverted.menu {
   padding-left: 15px;
 }
 
-#search-form .ui.popup .segment {
+#searchAssist .segment {
   border: 0;
   box-shadow: none;
   margin: 0;
@@ -297,12 +305,12 @@ header .ui.grid.inverted.menu {
   padding: 0;
 }
 
-#search-form .ui.popup .segment.first {
+#searchAssist .segment.first {
   width: 100px;
 
 }
 
-#search-form .ui.popup .segment.next {
+#searchAssist .segment.next {
   width: 100%;
 }
 
@@ -361,10 +369,6 @@ header .ui.grid.inverted.menu {
   background-color: #FABC3D;
 }
 
-#tax-listings .ui.piled.segment {
-    margin: 0 0 15px 0;
-}
-
 i.square.icon.left.compare {
     float: left;
 }
@@ -381,6 +385,10 @@ i.square.icon.left.compare {
     border-bottom: 1px solid #efefef;
 }
 
+#compList {
+  margin-top: 20px;
+}
+
 /* Tax and Parcel Detail Modal Styles */
 
 .ui.fullscreen.modal {
@@ -392,12 +400,43 @@ i.square.icon.left.compare {
     overflow: auto;
 }
 
+.app.body .column.padded-left {
+    padding-left: 30px;
+}
+
+.app.body .column.padded-right {
+    padding-right: 30px;
+}
+
+.app.body #trends-output .column {
+    height: 100vh;
+}
+
+div#app .clear .ui.segment:last-child, div#app .ui.cross-grid .ui.horizontal.segments .ui.segment:last-child {
+    margin-bottom: 0;
+}
+
+.basic.ui.segments {
+    border: 0;
+    box-shadow: none;
+}
+
+#app header .header {
+    margin-left: 16px;
+}
+
 /*******************************
              Chatbox Styles
 *******************************/
 
-#chatbox {
-  margin-bottom: 100px;
+div#paperChat {
+    position: fixed;
+    bottom: 16px;
+    width: 100%;
+    height: 200px;
+    background: #fafafa;
+    left: 15px;
+    overflow: scroll;
 }
 
 

@@ -2,25 +2,30 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import Grid from './grid';
 import Column from './column';
-import Row from './row.js';
 import Segment from './segment';
 import Segments from './segments';
 import CrossGrid from './crossgrid';
-import 'imports?$=jquery,jQuery=jquery!../../css/semantic/semantic.min.js';
-
-export default class TaxDetails extends React.Component {
-  constructor() {
-    super();
+import Actions from '../actions/appActions';
+export default class SideBySide extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      geoData : {
+        County:this.props.state.county,
+        City:this.props.state.address.city,
+        Zip:this.props.state.address.zip
+      }
+    };
+  }
+  componentDidMount(){
+    Actions.fetchTrends(this.state.geoData,this.props.id);
   }
   render () {
     let owners;
     let props = this.props;
     let state = props.state;
-    let embedImageKey = 'AIzaSyAC5JPC1hQbZ9s4TrI7rYGBr7j6DqD6E9M';
-    let embedMapKey = 'AIzaSyBqu09KlXrABRt8gQcxaPiMExeLJ0Gme9A';
-    let mapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${state.coordinates.lat},${state.coordinates.lon}&markers=color:blue%7C${state.coordinates.lat},${state.coordinates.lon}&zoom=14&size=300x200&key=${embedImageKey}`
-    let liveMapUrl = `https://www.google.com/maps/embed/v1/place?key=${embedMapKey}&q=${state.coordinates.lat},${state.coordinates.lon}`;
-    let streetViewUrl = `https://www.google.com/maps/embed/v1/streetview?key=${embedMapKey}&location=${state.coordinates.lat},${state.coordinates.lon}&heading=210&pitch=10&fov=35`;
+    let geo = this.state.geoData;
+    let mapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${state.coordinates.lat},${state.coordinates.lon}&markers=color:blue%7C${state.coordinates.lat},${state.coordinates.lon}&zoom=14&size=300x200&key=AIzaSyAC5JPC1hQbZ9s4TrI7rYGBr7j6DqD6E9M`
     if(typeof state.ownerName === "object"){
       owners = state.ownerName.map((o,k) => {
         return (
@@ -32,25 +37,12 @@ export default class TaxDetails extends React.Component {
     } else {
       owners = <Segment>{state.ownerName}</Segment>
     }
-    return (
-      <div id={props.id} className={classNames(props.styles, "detailView")} data-apn={state.apn}>
-        <Grid styles="ui stackable">
-        <Column styles="sixteen">
 
+    return (
+      <div id={props.id} className={classNames(props.styles, "detailView")}>
         <Grid styles="ui stackable">
-          <Column styles="eight">
-            <Segment>
-              <h5 className="ui top attached label">
-                Map:
-              </h5>
-              <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="230px"></iframe>
-            </Segment>
-          </Column>
-          <Column styles="eight">
-            <Segment>
-              <h5 className="ui top attached label">
-                Facts:
-              </h5>
+          <Column styles="sixteen">
+            <Segment styles="piled">
               <CrossGrid>
               <Segments styles="horizontal">
                 <Segment>
@@ -70,7 +62,7 @@ export default class TaxDetails extends React.Component {
                 </Segment>
                 <Segment>
                   <div className="ui top transparent attached label centered">{state.building.totalRooms}</div>
-                  <div className="ui bottom attached label centered">Total Rooms</div>
+                  <div className="ui bottom attached label centered">Rooms</div>
                 </Segment>
               </Segments>
               <Segments styles="horizontal">
@@ -94,8 +86,12 @@ export default class TaxDetails extends React.Component {
               </Segments>
             </CrossGrid>
             </Segment>
+          </Column>
+        </Grid>
+        <Grid styles="ui stackable">
+          <Column styles="sixteen">
             <Segments styles="piled">
-              <h5 className="ui top attached label">
+              <h5 className="ui top attached header">
                 Owners:
               </h5>
               {owners}
@@ -103,48 +99,40 @@ export default class TaxDetails extends React.Component {
           </Column>
         </Grid>
         <Grid styles="ui stackable">
-          <Column styles="eight">
+          <Column styles="sixteen">
             <Segments styles="piled">
-            <h5 className="ui top attached header light-grey">
-              Median Sale Price:
+            <h5 className="ui top attached header">
+              Median Sale Price in {geo.Zip} {geo.City} {geo.County}
             </h5>
             <Segment styles="attached">
-              chart will go here
+                <p>Chart will go here</p>
             </Segment>
             </Segments>
           </Column>
-          <Column styles="eight">
+          <Column styles="sixteen">
             <Segments styles="piled">
-            <h5 className="ui top attached header light-grey">
-              Median Days On Market:
+            <h5 className="ui top attached header">
+              Median Days On Market in {geo.Zip} {geo.City} {geo.County}
             </h5>
             <Segment styles="attached">
-              chart will go here
+              <p>Chart will go here</p>
+            </Segment>
+            </Segments>
+          </Column>
+          <Column styles="sixteen">
+            <Segments styles="piled">
+            <h5 className="ui top attached header">
+              Median SalePrice/Sqft in {geo.Zip} {geo.City} {geo.County}
+            </h5>
+            <Segment styles="attached">
+                <p>Chart will go here</p>
             </Segment>
             </Segments>
           </Column>
         </Grid>
-      </Column>
-    </Grid>
-    <Grid styles="ui stackable">
-      <Row>
-      <Column styles="sixteen">
-        <Segments styles="piled">
-          <h5 className="ui top attached header light-grey">
-            Street View
-          </h5>
-          <Segment styles="attached">
-            <iframe className="streetviewFrame" scrolling="no" frameBorder="0" src={streetViewUrl} width="100%" height="400px"></iframe>
-          </Segment>
-        </Segments>
-      </Column>
-      </Row>
-      <Row>
-      <Column styles="sixteen">
-          Notepad will go here
-      </Column>
-      </Row>
-    </Grid>
+        <Column styles="sixteen">
+          <p>Notes will go here</p>
+        </Column>
     </div>
     );
   }
