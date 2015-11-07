@@ -33,6 +33,7 @@ export default class App extends Component {
 
   showLock(){
     this.lock.show();
+    console.log('ola');
   }
 
   getLock() {
@@ -82,8 +83,8 @@ export default class App extends Component {
 
     return (
       <AppBody>
-        <Header />
-        <MarketCopy login={this.showLock}/>
+        <Header login={this.showLock}/>
+        <MarketCopy hello="hello" login={this.showLock}/>
         <ChatBox></ChatBox>
         <Footer copyYear={state.copyYear} />
       </AppBody>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import $ from 'jquery';
+import 'imports?$=jquery,jQuery=jquery!../../css/semantic/semantic.min.js';
 
 export default class MarketCopy extends React.Component {
 
@@ -28,7 +30,7 @@ export default class MarketCopy extends React.Component {
                   </div>
                   <div className="row">
                     <div className="center aligned column">
-                      <a className="ui huge button positive colored" onClick={props.login}>
+                      <a className="ui huge button positive colored" onClick={this.props.login}>
                         <i className="dashboard icon"></i>
                         Take a Test Drive
                       </a>
