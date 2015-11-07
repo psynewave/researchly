@@ -16,7 +16,11 @@ export default class TaxDetails extends React.Component {
     let owners;
     let props = this.props;
     let state = props.state;
-    let mapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${state.coordinates.lat},${state.coordinates.lon}&markers=color:blue%7C${state.coordinates.lat},${state.coordinates.lon}&zoom=14&size=300x200&key=AIzaSyAC5JPC1hQbZ9s4TrI7rYGBr7j6DqD6E9M`
+    let embedImageKey = 'AIzaSyAC5JPC1hQbZ9s4TrI7rYGBr7j6DqD6E9M';
+    let embedMapKey = 'AIzaSyBqu09KlXrABRt8gQcxaPiMExeLJ0Gme9A';
+    let mapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${state.coordinates.lat},${state.coordinates.lon}&markers=color:blue%7C${state.coordinates.lat},${state.coordinates.lon}&zoom=14&size=300x200&key=${embedImageKey}`
+    let liveMapUrl = `https://www.google.com/maps/embed/v1/place?key=${embedMapKey}&q=${state.coordinates.lat},${state.coordinates.lon}`;
+    let streetViewUrl = `https://www.google.com/maps/embed/v1/streetview?key=${embedMapKey}&location=${state.coordinates.lat},${state.coordinates.lon}&heading=210&pitch=10&fov=35`;
     if(typeof state.ownerName === "object"){
       owners = state.ownerName.map((o,k) => {
         return (
@@ -34,11 +38,15 @@ export default class TaxDetails extends React.Component {
         <Column styles="sixteen">
 
         <Grid styles="ui stackable">
-          <Column styles="four">
-            <img className="ui medium rounded image" src={mapImageUrl} />
+          <Column styles="eight">
+            <img className="hide ui medium rounded image" src={mapImageUrl} />
+            <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="250px"></iframe>
           </Column>
-          <Column styles="twelve">
-            <Segment styles="piled">
+          <Column styles="eight">
+            <Segment>
+              <h5 className="ui top attached label">
+                Facts:
+              </h5>
               <CrossGrid>
               <Segments styles="horizontal">
                 <Segment>
@@ -82,10 +90,6 @@ export default class TaxDetails extends React.Component {
               </Segments>
             </CrossGrid>
             </Segment>
-          </Column>
-        </Grid>
-        <Grid styles="ui stackable">
-          <Column styles="sixteen">
             <Segments styles="piled">
               <h5 className="ui top attached label">
                 Owners:
@@ -121,7 +125,14 @@ export default class TaxDetails extends React.Component {
     <Grid styles="ui stackable">
       <Row>
       <Column styles="sixteen">
-        streetview will go here
+        <Segments styles="piled">
+          <h5 className="ui top attached header light-grey">
+            Street View
+          </h5>
+          <Segment styles="attached">
+            <iframe className="streetviewFrame" scrolling="no" frameBorder="0" src={streetViewUrl} width="100%" height="400px"></iframe>
+          </Segment>
+        </Segments>
       </Column>
       </Row>
       <Row>

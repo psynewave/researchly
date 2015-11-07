@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5 {
       Utilities
 *******************************/
 
-.hidden {
+.hide {
     display: none!important;
     visibility: hidden!important;
 }
