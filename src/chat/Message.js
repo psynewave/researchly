@@ -1,18 +1,13 @@
 import React  from 'react/addons';
 
 var Message = React.createClass({
+
   render(){
+    let props = this.props;
     return (
-      <li
-        onClick={ this.props.handleClick.bind(null) }
-        className={ this.props.show ? 'bg-warning' : 'bg-info'}>
-          <button
-            onClick={ this.props.removeMessage.bind(null) }
-            className='btn btn-danger'>X
-          </button>
-            { this.props.thread.title }
-            { this.props.show && <p> { this.props.thread.message } </p> }
-      </li>
+      <div className='comment' onClick={ props.handleClick.bind(null) } className={ props.show ? 'bg-warning' : 'bg-info'}>
+            <i onClick={ props.removeMessage.bind(null) } className="close icon"></i> { props.thread.title }
+      </div>
     );
   }
 });

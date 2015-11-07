@@ -21,8 +21,7 @@ class NewChat extends React.Component {
 
     base.post('chats', {
       data: this.props.chats.concat([{
-        title: this.refs.title.getDOMNode().value ,
-        message: this.refs.message.getDOMNode().value
+        title: this.refs.title.value
       }]),
       context: this,
       /*
@@ -34,19 +33,18 @@ class NewChat extends React.Component {
       }
     });
 
-    this.refs.message.getDOMNode().value = '';
-    this.refs.title.getDOMNode().value = '';
+    this.refs.message.value = '';
+    this.refs.title.value = '';
 
   }
   render(){
     return (
-      <div className='col-md-12'>
-        <form onSubmit={ this._newChat.bind(this) } className='form-group col-md-8'>
-          <input ref='title' type='text' placeholder='Title' className='form-control' />
-          <textarea ref='message'  placeholder='Message' className='form-control' />
-          <input type='submit' className='btn btn-success' />
+        <form onSubmit={ this._newChat.bind(this) }>
+          <div className="ui fluid action input">
+            <input ref="title" placeholder="Message" type="search" placeholder="Send" />
+            <button className="ui button" type="submit">Submit</button>
+          </div>
         </form>
-      </div>
     )
   }
 }
