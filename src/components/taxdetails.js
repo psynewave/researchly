@@ -39,8 +39,12 @@ export default class TaxDetails extends React.Component {
 
         <Grid styles="ui stackable">
           <Column styles="eight">
-            <img className="hide ui medium rounded image" src={mapImageUrl} />
-            <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="250px"></iframe>
+            <Segment>
+              <h5 className="ui top attached label">
+                Map:
+              </h5>
+              <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="230px"></iframe>
+            </Segment>
           </Column>
           <Column styles="eight">
             <Segment>
