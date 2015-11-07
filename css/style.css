@@ -127,6 +127,23 @@ footer {
     color: white;
 }
 
+/** Logged Out **/
+header.logged-out {
+    padding-top: 70px;
+}
+
+h2#bigLogo {
+    color: white;
+}
+
+header.logged-out .header {
+    color: white;
+}
+
+header.logged-out i.circular.icon {
+    box-shadow: 0 0 0 .1em rgba(255,255,255,1) inset;
+}
+
 /*******************************
              Chatbox Styles
 *******************************/

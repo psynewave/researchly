@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import AppBody from './components/appBody';
 import Footer from './components/footer';
 import MarketCopy from './components/marketcopy';
-import Header from './components/header';
+import Header from './components/headerloggedout';
 import ChatBox from './chat/ChatBox'
 
 window.React = React;
