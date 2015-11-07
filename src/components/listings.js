@@ -27,15 +27,12 @@ export default class Listings extends Component {
 
   open(e) {
     let state = this.state;
-    let apn = $(e.target).parents('.taxitem').data('apn');
+    let apn = String($(e.target).parents('.taxitem').data('apn'));
 
     let parcel = _.where(state.parcels, {'apn': apn})[0];
     let assessment = _.where(state.assessments, {'apn': apn})[0];
     let taxDetailAddress = $(e.target).parents('.taxitem').data('header');
     let transaction = _.where(state.transactions, {'apn': apn})[0];
-    // let transaction = _.filter(state.transactions, function(tax) {
-    //         return _.where(tax, {'apn': apn}).length > 0;
-    //     })[0];
 
     this.setState({
       apn: apn,
