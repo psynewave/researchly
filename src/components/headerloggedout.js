@@ -12,7 +12,7 @@ export default class Header extends React.Component {
     let state = this.state;
 
     return (
-      <header>
+      <header className="logged-out">
         <div className="ui container">
           <h2 id="bigLogo" className="ui center aligned icon header">
             <i className="circular line chart icon"></i>

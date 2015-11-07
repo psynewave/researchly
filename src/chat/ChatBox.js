@@ -26,7 +26,7 @@ export default class ChatBox extends React.Component {
   }
   render(){
     return (
-      <div className="ui segment">
+      <div id="chatbox" className="ui segment">
         <NewChat chats={ this.state.messages } />
         <Container />
       </div>

@@ -5,9 +5,9 @@ import '../css/style.css';
 import React, { Component } from 'react';
 import AppBody from './components/appBody';
 import MarketCopy from './components/marketcopy';
-import Header from './components/header';
 import ChatBox from './chat/ChatBox';
 import NotePad from './notes/NotePad';
+import LoggedOutContent from './components/loggedoutcontent';
 
 window.React = React;
 window.$ = $;
@@ -33,6 +33,7 @@ export default class App extends Component {
 
   showLock(){
     this.lock.show();
+    console.log('ola');
   }
 
   getLock() {
@@ -78,15 +79,9 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state.profile);
-
+    let state = this.state;
     return (
-      <AppBody>
-        <Header />
-        <MarketCopy login={this.showLock}/>
-        <NotePad></NotePad>
-        <ChatBox></ChatBox>
-      </AppBody>
+      <LoggedOutContent state={this.state} login={this.showLock}/>
     );
   }
 }

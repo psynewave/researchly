@@ -33,7 +33,6 @@ class NewChat extends React.Component {
       }
     });
 
-    this.refs.message.value = '';
     this.refs.title.value = '';
 
   }
