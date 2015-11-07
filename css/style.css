@@ -429,8 +429,14 @@ div#app .clear .ui.segment:last-child, div#app .ui.cross-grid .ui.horizontal.seg
              Chatbox Styles
 *******************************/
 
-#chatbox {
-  margin-bottom: 100px;
+div#paperChat {
+    position: fixed;
+    bottom: 16px;
+    width: 100%;
+    height: 200px;
+    background: #fafafa;
+    left: 15px;
+    overflow: scroll;
 }
 
 

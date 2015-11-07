@@ -4,6 +4,7 @@ import Footer from './footer';
 import MarketCopy from './marketcopy';
 import Header from './headerloggedin';
 import TrendsOutput from './trendsoutput.js';
+import ChatBox from '../chat/ChatBox';
 
 export default class LoggedInContent extends React.Component {
 
@@ -16,7 +17,7 @@ export default class LoggedInContent extends React.Component {
       <AppBody>
         <Header profile={props.profile} login={props.login}/>
         <TrendsOutput />
-        <Footer copyYear={_state.copyYear} />
+        <ChatBox></ChatBox>
       </AppBody>
     );
   }
