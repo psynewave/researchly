@@ -75,10 +75,34 @@ export default class App extends Component {
   }
 
   render() {
+    let contentView;
     let state = this.state;
 
+
+    if (state.idToken) {
+      contentView = <div>
+        <LoggedOutContent state={this.state} login={this.showLock}/>
+            <div className="ui menu inverted fixed">
+              <div className="item">
+                loggedin
+              </div>
+            </div>
+        </div>
+    } else {
+      contentView = <div>
+            <LoggedOutContent state={this.state} login={this.showLock}/>
+              <div className="ui menu inverted fixed">
+                <div className="item">
+                  loggedout
+                </div>
+              </div>
+        </div>
+    }
+
     return (
-      <LoggedOutContent state={this.state} login={this.showLock}/>
+      <div id="app" className="pusher">
+      {contentView}
+      </div>
     );
   }
 }
