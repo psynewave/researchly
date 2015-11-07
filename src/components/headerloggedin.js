@@ -2,10 +2,46 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import 'imports?$=jquery,jQuery=jquery!../../css/semantic/semantic.min.js';
+import Actions from '../actions/appActions';
+import Constants from '../constants/consts';
+import Store from '../stores/AppStore';
 
 export default class Header extends React.Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      location : Store.GeoData()
+    };
+    this._search = this.search.bind(this);
+    this._found = this.found.bind(this);
+  }
+
+  search(e){
+    e.preventDefault();
+    let address = ReactDOM.findDOMNode(this.refs.search).value;
+    Actions.geoCode(address);
+  }
+
+  found(){
+    window.setTimeout(function () {
+      Actions.fetchTrends(Store.GeoData(),'search');
+      Actions.fetchResults();
+    }, 10);
+    this.setState({
+      location : Store.GeoData()
+    });
+  }
+
+  componentWillMount () {
+    Store.addChangeListener(Constants.NEW_LOC, this._found);
+    if( this.props.default ){
+      Actions.geoCode('94086');
+    }
+  }
+
+  componentWillUnmount(){
+    Store.removeChangeListener(Constants.NEW_LOC, this._found);
   }
 
   componentDidMount() {
@@ -21,9 +57,11 @@ export default class Header extends React.Component {
     let avatar;
     let props = this.props;
     let state = this.state;
-    let profile = props.profile ? props.profile : null;
 
-    console.log(props);
+    let zip = state.location.Zip ? state.location.Zip : '';
+    let city = state.location.City ? state.location.City : '';
+    let county = state.location.County ? state.location.County : '';
+    let profile = props.profile ? props.profile : null;
 
     if(profile){
       avatar = <div className="ui medium list avatar">
@@ -36,7 +74,7 @@ export default class Header extends React.Component {
        </div>
     }
 
-    let heading =  `blah`;
+    let heading =  `${zip} ${city} ${county}`;
 
     let popup = "<div className='header'>Search Examples</div><div className='content'> <div className='ui list'> <div className='item'> <div className='ui horizontal segments'> <div className='ui first basic segment'> <p>City, State</p></div><div className='ui next basic segment'> <p>sunnyvale, ca</p></div></div></div><div className='item'> <div className='ui horizontal segments'> <div className='ui first basic segment'> <p>Zip Code</p></div><div className='ui next basic segment'> <p>94086</p></div></div></div><div className='item'> <div className='ui horizontal segments'> <div className='ui first basic segment'> <p>Address</p></div><div className='ui next basic segment'> <p>350 Oakmead Pky Sunnyvale CA</p></div></div></div><div className='item'> <div className='ui horizontal segments'> <div className='ui first basic segment'> <p>Street</p></div><div className='ui next basic segment'> <p>Oakmead Pky Sunnyvale CA</p></div></div></div></div></div></div></div>";
 

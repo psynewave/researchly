@@ -196,6 +196,7 @@ footer {
 }
 
 /** Logged Out **/
+
 header.logged-out {
     padding-top: 70px;
 }
@@ -211,6 +212,10 @@ header.logged-out .header {
 header.logged-out i.circular.icon {
     box-shadow: 0 0 0 .1em rgba(255,255,255,1) inset;
 }
+
+/** End **/
+
+/** Logged In **/
 
 header.collapsed {
   height: 120px;
@@ -311,6 +316,80 @@ header .ui.grid.inverted.menu {
     height: 100vh;
     display: block;
     box-sizing: border-box;
+}
+
+/** End **/
+
+/*******************************
+    Tax and Trends Styles
+*******************************/
+
+.ui.cross-grid .ui.horizontal.segments {
+    margin: 0;
+    border-radius: 0;
+}
+
+.ui.transparent.label {
+    background: transparent;
+}
+
+.ui.label.centered {
+    text-align: center;
+}
+
+.ui.cross-grid .ui.horizontal.segments .ui.segment {
+    width: 25%;
+}
+
+#tax-listings .title.left {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.ui.header>.icon.left {
+    float: left;
+    font-size: 1.2em;
+    padding-top: 0;
+}
+
+.ui.header.light-grey {
+    background: #e8e8e8;
+}
+
+.ui.light-orange {
+  background-color: #FABC3D;
+}
+
+#tax-listings .ui.piled.segment {
+    margin: 0 0 15px 0;
+}
+
+i.square.icon.left.compare {
+    float: left;
+}
+
+#tax-listings h4.ui.header {
+    margin: 0;
+}
+
+#tax-listings h4.ui.header span {
+    cursor: pointer;
+}
+
+.ui.segment.taxitem {
+    border-bottom: 1px solid #efefef;
+}
+
+/* Tax and Parcel Detail Modal Styles */
+
+.ui.fullscreen.modal {
+    width: 100%!important;
+    left: 0!important;
+    margin: 0;
+    height: 100vh;
+    border-radius: 0;
+    overflow: auto;
 }
 
 /*******************************

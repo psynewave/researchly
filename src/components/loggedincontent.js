@@ -3,7 +3,7 @@ import AppBody from './appBody';
 import Footer from './footer';
 import MarketCopy from './marketcopy';
 import Header from './headerloggedin';
-import ChatBox from '../chat/ChatBox';
+import TrendsOutput from './trendsoutput.js';
 
 export default class LoggedInContent extends React.Component {
 
@@ -15,6 +15,7 @@ export default class LoggedInContent extends React.Component {
     return (
       <AppBody>
         <Header profile={props.profile} login={props.login}/>
+        <TrendsOutput />
         <Footer copyYear={_state.copyYear} />
       </AppBody>
     );
