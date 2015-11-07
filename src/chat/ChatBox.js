@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from './Container';
 import NewChat from './NewChat';
-
+import NotePad from '../notes/NotePad';
 import Rebase from 're-base';
 var base = Rebase.createClass('https://researchly.firebaseio.com/');
 
@@ -26,9 +26,18 @@ export default class ChatBox extends React.Component {
   }
   render(){
     return (
-      <div id="chatbox" className="ui segment">
-        <NewChat chats={ this.state.messages } />
-        <Container />
+      <div className="ui grid">
+        <div className="eight wide column">
+          <div className="ui segment">
+            <NewChat chats={ this.state.messages } />
+            <Container />
+          </div>
+        </div>
+        <div className="eight wide column">
+          <div className="ui segment">
+            <NotePad />
+          </div>
+        </div>
       </div>
     )
   }

@@ -1,7 +1,5 @@
 import React  from 'react/addons';
-
-var Message = React.createClass({
-
+export default class Message extends React.Component {
   render(){
     let props = this.props;
     return (
@@ -10,6 +8,4 @@ var Message = React.createClass({
       </div>
     );
   }
-});
-
-export default Message
+}

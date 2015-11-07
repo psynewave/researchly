@@ -7,11 +7,11 @@ export default class NotesList extends React.Component{
     });
     return (
       <div className='ui comments'>
-        <h3 className="ui dividing header">Notes { (notes.length || 0) + ' notes' }</h3>
+        <h3 className="ui dividing header">Notes ({ (notes.length || 0) })</h3>
         <ul className="list-group">
           {notes}
         </ul>
       </div>
     )
   }
-}
+};

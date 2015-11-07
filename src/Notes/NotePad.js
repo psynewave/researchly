@@ -38,12 +38,10 @@ export default class NotePad extends React.Component{
   render(){
     var username = 'ash';
     return (
-      <div className="ui segment">
           <Notes
             username={username}
             notes={this.state.notes}
             addNote={this.handleAddNote.bind(this)} />
-      </div>
     )
   }
-}
+};

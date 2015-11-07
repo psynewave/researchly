@@ -1,11 +1,9 @@
 import React from 'react';
 import Rebase from 're-base';
-
 import Message from './Message.js';
-
 var base = Rebase.createClass('https://researchly.firebaseio.com/chat');
 
-class Container extends React.Component {
+export default class Container extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -71,7 +69,8 @@ class Container extends React.Component {
     });
   }
   render(){
-    var messages = this.state.messages.map( (item, index) => {
+    var items = this.state.messages.reverse();
+    var messages = items.map( (item, index) => {
       return (
         <Message
           thread={ item }
@@ -84,11 +83,9 @@ class Container extends React.Component {
 
     return (
       <div className='ui comments'>
-        <h3 className="ui dividing header">Paper Chat { (this.state.messages.length || 0) + ' messages' }</h3>
+        <h3 className="ui dividing header">Messages ({ (this.state.messages.length || 0) })</h3>
           { messages }
       </div>
     );
   }
-}
-
-export default Container
+};

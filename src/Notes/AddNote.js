@@ -17,4 +17,4 @@ export default class AddNote extends React.Component{
     </form>
     )
   }
-}
+};

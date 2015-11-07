@@ -1,9 +1,8 @@
 import React from 'react';
 import Rebase from 're-base';
-
 var base = Rebase.createClass('https://researchly.firebaseio.com/');
 
-class NewChat extends React.Component {
+export default class NewChat extends React.Component {
   _newChat(e){
     e.preventDefault();
 
@@ -46,6 +45,4 @@ class NewChat extends React.Component {
         </form>
     )
   }
-}
-
-export default NewChat;
+};
