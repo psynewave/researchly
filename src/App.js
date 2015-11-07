@@ -4,6 +4,7 @@ import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
 import '../css/style.css';
 import React, { Component } from 'react';
 import AppBody from './components/appBody';
+import Footer from './components/footer';
 import MarketCopy from './components/marketcopy';
 import Header from './components/header';
 import ChatBox from './chat/ChatBox'
@@ -77,12 +78,14 @@ export default class App extends Component {
   }
 
   render() {
+    let state = this.state;
 
     return (
       <AppBody>
         <Header />
         <MarketCopy login={this.showLock}/>
         <ChatBox></ChatBox>
+        <Footer copyYear={state.copyYear} />
       </AppBody>
     );
   }
