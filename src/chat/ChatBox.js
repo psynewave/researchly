@@ -27,15 +27,21 @@ export default class ChatBox extends React.Component {
   render(){
     return (
       <div id="paperChat" className="ui grid">
-        <div className="eight wide column">
-          <div className="ui segment">
-            <NewChat chats={ this.state.messages } />
-            <Container />
+        <div className="row">
+          <div id="grabHandles" className="sixteen wide column">
           </div>
         </div>
-        <div className="eight wide column">
-          <div className="ui segment">
-            <NotePad />
+        <div className="row">
+          <div className="eight wide column">
+            <div className="ui segment">
+              <NewChat chats={ this.state.messages } />
+              <Container />
+            </div>
+          </div>
+          <div className="eight wide column">
+            <div className="ui segment">
+              <NotePad />
+            </div>
           </div>
         </div>
       </div>
