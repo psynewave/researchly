@@ -272,16 +272,24 @@ header .ui.grid.inverted.menu {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#search-form .item {
+div#search-form .item {
     color: black!important;
 }
 
-#search-form .ui.popup .header {
-    color: black!important;
-    padding: 0;
+header .ui.popup {
+    width: 100%;
 }
 
-#search-form .ui.popup .segments {
+#app header #searchAssist .header {
+  padding-top: 0;
+  padding-bottom: 0;
+  color: black;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#searchAssist .segments {
   border: 0;
   box-shadow: none;
   margin: 0;
@@ -289,7 +297,7 @@ header .ui.grid.inverted.menu {
   padding-left: 15px;
 }
 
-#search-form .ui.popup .segment {
+#searchAssist .segment {
   border: 0;
   box-shadow: none;
   margin: 0;
@@ -297,12 +305,12 @@ header .ui.grid.inverted.menu {
   padding: 0;
 }
 
-#search-form .ui.popup .segment.first {
+#searchAssist .segment.first {
   width: 100px;
 
 }
 
-#search-form .ui.popup .segment.next {
+#searchAssist .segment.next {
   width: 100%;
 }
 
