@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import AppBody from './components/appBody';
 import MarketCopy from './components/marketcopy';
 import Header from './components/header';
+import ChatBox from './chat/ChatBox'
 
 window.React = React;
 window.$ = $;
@@ -81,6 +82,7 @@ export default class App extends Component {
       <AppBody>
         <Header />
         <MarketCopy login={this.showLock}/>
+        <ChatBox></ChatBox>
       </AppBody>
     );
   }
