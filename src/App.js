@@ -8,6 +8,7 @@ import MarketCopy from './components/marketcopy';
 import ChatBox from './chat/ChatBox';
 import NotePad from './notes/NotePad';
 import LoggedOutContent from './components/loggedoutcontent';
+import LoggedInContent from './components/loggedincontent';
 
 window.React = React;
 window.$ = $;
@@ -84,12 +85,7 @@ export default class App extends Component {
 
     if (state.idToken) {
       contentView = <div>
-        <LoggedOutContent state={this.state} login={this.showLock}/>
-            <div className="ui menu inverted fixed">
-              <div className="item">
-                loggedin
-              </div>
-            </div>
+        <LoggedInContent state={this.state} profile={state.profile} login={this.showLock}/>
         </div>
     } else {
       contentView = <div>

@@ -106,6 +106,74 @@ h1, h2, h3, h4, h5 {
 }
 
 /*******************************
+      Utilities
+*******************************/
+
+.hidden {
+    display: none!important;
+    visibility: hidden!important;
+}
+
+.full.height {
+    display: block;
+    flex: none !important;
+}
+
+.icon.right {
+  float: right!important;
+}
+
+.icon.left {
+  float: left!important;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0!important;
+}
+
+.no-padding-top {
+  padding-top: 0!important;
+}
+
+.no-padding-right {
+  padding-right: 0!important;
+}
+
+.no-padding-left {
+  padding-left: 0!important;
+}
+
+.no-margin-right {
+  margin-right: 0!important;
+}
+
+.no-margin-left {
+  margin-left: 0!important;
+}
+
+.no-margin-top {
+  margin-top: 0!important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0!important;
+}
+
+.no-border-radius {
+  border-radius: 0!important;
+}
+
+.clear:before,
+.clear:after {
+    content: " ";
+    display: table;
+}
+
+.clear:after {
+    clear: both;
+}
+
+/*******************************
              App Styles
 *******************************/
 
@@ -142,6 +210,107 @@ header.logged-out .header {
 
 header.logged-out i.circular.icon {
     box-shadow: 0 0 0 .1em rgba(255,255,255,1) inset;
+}
+
+header.collapsed {
+  height: 120px;
+  border-bottom: 1px solid #d4d4da;
+}
+
+#app header .ui.list.avatar .header {
+  padding: 0;padding-top: 8px;}
+
+#app header .ui.list.avatar {
+  padding-top: 8px;
+  float: right;
+}
+
+div#smallLogo {
+    position: relative;
+}
+
+#smallLogoHeader {
+    position: absolute;
+    top: -20px;
+    left: 69px;
+    font-size: .85em;
+    text-transform: none;
+}
+
+i#smallLogoIcon {
+    position: absolute;
+    font-size: .85em;
+    top: 15px;
+}
+
+#app header .header {
+  color: white;
+  padding: 45px 0 25px 0;
+}
+
+#app header .header i.circular.icon{
+  box-shadow: 0 0 0 .1em rgba(255,255,255,1) inset
+}
+
+#app header.collapsed .header.search-header {
+    padding-top: 10px;
+    margin: 0;
+    background-color: rgba(93,174,208,.4);
+    margin-top: -14px;
+    box-sizing: border-box;
+    height: 47px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+header .ui.grid.inverted.menu {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#search-form .item {
+    color: black!important;
+}
+
+#search-form .ui.popup .header {
+    color: black!important;
+    padding: 0;
+}
+
+#search-form .ui.popup .segments {
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+}
+
+#search-form .ui.popup .segment {
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+  margin-bottom: 0!important;
+  padding: 0;
+}
+
+#search-form .ui.popup .segment.first {
+  width: 100px;
+
+}
+
+#search-form .ui.popup .segment.next {
+  width: 100%;
+}
+
+#app header .header.search-header {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.app.body {
+    position: relative;
+    height: 100vh;
+    display: block;
+    box-sizing: border-box;
 }
 
 /*******************************
