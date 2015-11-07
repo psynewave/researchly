@@ -3,6 +3,7 @@ import _ from 'underscore';
 import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
 import '../css/style.css';
 import React, { Component } from 'react';
+import MarketCopy from './components/marketcopy';
 
 window.React = React;
 window.$ = $;
@@ -75,10 +76,7 @@ export default class App extends Component {
   render() {
 
     return (
-      <div><a className="ui huge button positive colored" onClick={this.showLock}>
-                  <i className="dashboard icon"></i>
-                  Take a Test Drive
-                </a></div>
+      <MarketCopy />
     );
   }
 }
