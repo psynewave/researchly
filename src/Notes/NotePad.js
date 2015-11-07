@@ -1,23 +1,22 @@
 import React from 'react';
 import Notes from './Notes';
 import Rebase from 're-base';
-var base = Rebase.createClass('https://github-note-taker.firebaseio.com/');
+var base = Rebase.createClass('https://researchly.firebaseio.com/');
 
 export default class NotePad extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      notes: [],
-      bio: {},
-      repos: []
+      notes: []
     };
   }
   init(){
-    this.ref = base.syncState(this.router.getCurrentParams().username, {
+    this.ref = base.syncState('ash', {
       context: this,
       asArray: true,
       state: 'notes'
-    });
+    })
+  }
 
   componentWillMount(){
   }
@@ -39,10 +38,12 @@ export default class NotePad extends React.Component{
   render(){
     var username = 'ash';
     return (
+      <div className="ui segment">
           <Notes
             username={username}
             notes={this.state.notes}
             addNote={this.handleAddNote.bind(this)} />
+      </div>
     )
   }
 }

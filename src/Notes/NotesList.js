@@ -1,16 +1,17 @@
 import React from 'react';
 
-class NotesList extends React.Component{
+export default class NotesList extends React.Component{
   render(){
     var notes = this.props.notes.map((note, index) => {
       return <li className="list-group-item" key={index}> {note} </li>
     });
     return (
-      <ul className="list-group">
-        {notes}
-      </ul>
+      <div className='ui comments'>
+        <h3 className="ui dividing header">Notes { (notes.length || 0) + ' notes' }</h3>
+        <ul className="list-group">
+          {notes}
+        </ul>
+      </div>
     )
   }
-};
-
-export default NotesList;
+}

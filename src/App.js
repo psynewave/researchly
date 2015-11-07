@@ -6,7 +6,8 @@ import React, { Component } from 'react';
 import AppBody from './components/appBody';
 import MarketCopy from './components/marketcopy';
 import Header from './components/header';
-import ChatBox from './chat/ChatBox'
+import ChatBox from './chat/ChatBox';
+import NotePad from './notes/NotePad';
 
 window.React = React;
 window.$ = $;
@@ -77,11 +78,13 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.state.profile);
 
     return (
       <AppBody>
         <Header />
         <MarketCopy login={this.showLock}/>
+        <NotePad></NotePad>
         <ChatBox></ChatBox>
       </AppBody>
     );
