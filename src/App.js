@@ -3,8 +3,11 @@ import _ from 'underscore';
 import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
 import '../css/style.css';
 import React, { Component } from 'react';
-import ChatBox from './chat/ChatBox'
+import AppBody from './components/appBody';
 import MarketCopy from './components/marketcopy';
+import Header from './components/header';
+import ChatBox from './chat/ChatBox'
+
 window.React = React;
 window.$ = $;
 window.jQuery = $;
@@ -76,10 +79,11 @@ export default class App extends Component {
   render() {
 
     return (
-      <div>
-      <ChatBox></ChatBox>
-      <MarketCopy login={this.showLock}/>
-      </div>
+      <AppBody>
+        <Header />
+        <MarketCopy login={this.showLock}/>
+        <ChatBox></ChatBox>
+      </AppBody>
     );
   }
 }

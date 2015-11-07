@@ -26,7 +26,7 @@ export default class ChatBox extends React.Component {
   }
   render(){
     return (
-      <div style={ { paddingTop: '30px' } }>
+      <div className="ui segment">
         <NewChat chats={ this.state.messages } />
         <Container />
       </div>

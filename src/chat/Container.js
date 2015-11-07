@@ -83,11 +83,9 @@ class Container extends React.Component {
     });
 
     return (
-      <div className='col-md-12'>
-        <div className='col-md-8'>
-          <h1>{ (this.state.messages.length || 0) + ' messages' }</h1>
-          <ul>{ messages }</ul>
-        </div>
+      <div className='ui comments'>
+        <h3 className="ui dividing header">Paper Chat { (this.state.messages.length || 0) + ' messages' }</h3>
+          { messages }
       </div>
     );
   }
