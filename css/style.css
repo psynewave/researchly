@@ -435,8 +435,39 @@ div#paperChat {
     width: 100%;
     height: 200px;
     background: #fafafa;
-    left: 15px;
+    left: 0;
     overflow: scroll;
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+
+div#paperChat.fullChat {
+    height: calc(100vh - 90px);
+}
+
+div#grabHandles {
+    padding: 0;
+}
+div#grabHandles i {
+  cursor: pointer;
+}
+
+div#grabHandles .segment {
+    background-color: transparent;
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+div#grabHandles .segments {
+    background: transparent;
+    text-align: center;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#paperChat .row:first-child {
+    padding: 0;
 }
 
 

@@ -9,8 +9,10 @@ export default class ChatBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      fullsize: false
     };
+    this.fullChat = this.fullChat.bind(this);
   }
   componentWillMount(){
   /*
@@ -24,11 +26,43 @@ export default class ChatBox extends React.Component {
       asArray: true
     });
   }
+
+  componentDidMount(){
+    // damn thing is reversed too much of PITA for the hackathon will rework later
+    // $('#paperChat').resizable({
+    //     handles: {
+    //         "n s": $("#customResizableHandle"),
+    //     },
+    //     grid: [10000, 1]
+    // });
+  }
+
+  fullChat(){
+    let state = this.state;
+    console.log('it');
+    this.setState({
+      fullsize: state.fullsize ? false : true
+    });
+  }
+
   render(){
+    let state = this.state;
+
     return (
-      <div id="paperChat" className="ui grid">
+      <div id="paperChat" className={ state.fullsize ? 'ui grid fullChat' : 'ui grid'}>
         <div className="row">
           <div id="grabHandles" className="sixteen wide column">
+            <div id="grabBar" className="ui horizontal segments basic aligned center no-border-radius">
+              <div className="ui segment basic">
+                <p></p>
+              </div>
+              <div id="customResizableHandle" className="ui segment basic aligned center">
+                <p><i className="ellipsis horizontal icon" onClick={this.fullChat}></i></p>
+              </div>
+              <div className="ui segment basic">
+                <p></p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="row">
