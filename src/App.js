@@ -3,7 +3,9 @@ import _ from 'underscore';
 import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
 import '../css/style.css';
 import React, { Component } from 'react';
+import AppBody from './components/appBody';
 import MarketCopy from './components/marketcopy';
+import Header from './components/header';
 
 window.React = React;
 window.$ = $;
@@ -76,7 +78,10 @@ export default class App extends Component {
   render() {
 
     return (
-      <MarketCopy login={this.showLock}/>
+      <AppBody>
+        <Header />
+        <MarketCopy login={this.showLock}/>
+      </AppBody>
     );
   }
 }
