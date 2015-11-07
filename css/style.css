@@ -361,10 +361,6 @@ header .ui.grid.inverted.menu {
   background-color: #FABC3D;
 }
 
-#tax-listings .ui.piled.segment {
-    margin: 0 0 15px 0;
-}
-
 i.square.icon.left.compare {
     float: left;
 }
@@ -381,6 +377,10 @@ i.square.icon.left.compare {
     border-bottom: 1px solid #efefef;
 }
 
+#compList {
+  margin-top: 20px;
+}
+
 /* Tax and Parcel Detail Modal Styles */
 
 .ui.fullscreen.modal {
@@ -390,6 +390,31 @@ i.square.icon.left.compare {
     height: 100vh;
     border-radius: 0;
     overflow: auto;
+}
+
+.app.body .column.padded-left {
+    padding-left: 30px;
+}
+
+.app.body .column.padded-right {
+    padding-right: 30px;
+}
+
+.app.body #trends-output .column {
+    height: 100vh;
+}
+
+div#app .clear .ui.segment:last-child, div#app .ui.cross-grid .ui.horizontal.segments .ui.segment:last-child {
+    margin-bottom: 0;
+}
+
+.basic.ui.segments {
+    border: 0;
+    box-shadow: none;
+}
+
+#app header .header {
+    margin-left: 16px;
 }
 
 /*******************************
