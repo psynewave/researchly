@@ -32,7 +32,7 @@ export default class NewChat extends React.Component {
         <form onSubmit={ this._newChat.bind(this) }>
           <div className="ui fluid action input">
             <input ref="title" placeholder="Message" type="search" placeholder="Send" />
-            <button className="ui button" type="submit">Submit</button>
+            <button className="ui button primary" type="submit">Submit</button>
           </div>
         </form>
     )

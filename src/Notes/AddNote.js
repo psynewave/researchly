@@ -12,7 +12,7 @@ export default class AddNote extends React.Component{
       <form onSubmit={ this.handleSubmit.bind(this) }>
           <div className="ui fluid action input">
             <input ref="note" placeholder="Message" type="search" placeholder="Add New Note..." />
-            <button className="ui button" type="submit">Submit</button>
+            <button className="ui button orange" type="submit">Submit</button>
           </div>
       </form>
     )
