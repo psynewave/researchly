@@ -50,7 +50,7 @@ export default class BaseStore extends EventEmitter {
         'apn': apn
       });
       if(data.length>0){
-        return data;
+        return data[0];
       }
       return null;
     }
