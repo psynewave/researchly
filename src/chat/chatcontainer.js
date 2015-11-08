@@ -25,7 +25,7 @@ export default class Container extends React.Component {
      */
      let chatBase = 'ChatRoom';
      if(this.props.apn){
-       chatBase = this.props.apn + '/comments';
+       chatBase = 'history/' + this.props.apn + '/comments';
      }
 
     this.ref = base.syncState(chatBase, {

@@ -21,7 +21,7 @@ export default class NewChat extends React.Component {
     let avatar = this.props.profile ? this.props.profile.picture : '../Portal/images/alan.png';
     let chatBase = 'ChatRoom';
     if(this.props.apn){
-      chatBase = this.props.apn + '/comments';
+      chatBase = 'history/' + this.props.apn + '/comments';
     }
 
     base.post(chatBase, {
