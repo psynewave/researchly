@@ -36,7 +36,7 @@ export default class ChatBox extends React.Component {
         </div>
         <div className="eight wide column">
           <div className="ui segment">
-            <NotePad />
+            <NotePad profile={props.profile} />
           </div>
         </div>
       </div>

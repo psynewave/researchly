@@ -36,10 +36,12 @@ export default class NotePad extends React.Component{
     })
   }
   render(){
-    var username = 'ash';
+    let props = this.props;
+    console.log(this.props);
+
     return (
           <Notes
-            username={username}
+            profile={props.profile}
             notes={this.state.notes}
             addNote={this.handleAddNote.bind(this)} />
     )
