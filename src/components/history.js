@@ -32,6 +32,7 @@ export default class Listings extends Component {
 
   selectComp(e) {
     let apn = String($(e.target).data('apn'));
+    Actions.fetchByAPN(apn);
     let comps = Store.Comps().slice();
     let compIndex = _.indexOf(comps, apn);
 

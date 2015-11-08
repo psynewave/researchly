@@ -45,6 +45,16 @@ export default class BaseStore extends EventEmitter {
       return _assessments;
     }
 
+    Assessment(apn){
+      var data = _.where(_assessments, {
+        'apn': apn
+      });
+      if(data.length>0){
+        return data;
+      }
+      return null;
+    }
+
     Transactions(){
       return _transactions;
     }
@@ -107,6 +117,13 @@ Dispatcher.register(action => {
             _assessments=action.payload.results;
             AppStore.emitChange(Constants.ASSESSMENTS_RECEIVED);
             break;
+        case Constants.NEW_ASSESSMENT:
+              if(action.payload.results){
+                _assessments.push(action.payload.results[0]);
+              }
+              AppStore.emitChange(Constants.ASSESSMENT_RECEIVED);
+              break;
+
         case Constants.NEW_TRANSACTIONS:
             _transactions=action.payload.results;
             AppStore.emitChange(Constants.TRANSACTIONS_RECEIVED);
