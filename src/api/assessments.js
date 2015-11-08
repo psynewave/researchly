@@ -26,6 +26,18 @@ class Assessments {
               Actions.receiveAssessments(payload);
           });
     }
+    fetchParcel(apn){
+          var filter = '&apn='+apn;
+          $.ajax({
+              url: Constants.ASSESSMENTS_URL + filter,
+              dataType: "json"
+          }).done(function(results){
+              var payload = {
+                results : results.bundle
+              };
+              Actions.receiveAssessment(payload);
+          });
+    }
 }
 let assessmentsAPI = new Assessments();
 export default assessmentsAPI;

@@ -18,6 +18,9 @@ export default {
     Assessments.fetch();
     Transactions.fetch();
   },
+  fetchByAPN(apn){
+    Assessments.fetchParcel(apn);
+  },
   rebindPaper(payload){
     Dispatcher.dispatch({
         actionType: Constants.REBIND_PAPER,
@@ -54,6 +57,12 @@ export default {
   receiveAssessments(payload) {
       Dispatcher.dispatch({
           actionType: Constants.NEW_ASSESSMENTS,
+          payload
+      });
+  },
+  receiveAssessment(payload) {
+      Dispatcher.dispatch({
+          actionType: Constants.NEW_ASSESSMENT,
           payload
       });
   },
