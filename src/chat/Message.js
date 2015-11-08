@@ -72,14 +72,71 @@ export default class Message extends React.Component {
     });
 
     p.addRule(/\#trends[\S]+/ig, function(tag) {
-        let trendsUrl = `https://mlspro.staging.mlslistings.com/odata/Growth/MarketTrends?$filter=Class%20eq%20%27Residential%20-%20Single%20Family%27%20and%20PeriodType%20eq%20%27Year%27%20and%20GeographyType%20eq%20%27Zip%27%20and%20GeographyName%20eq%20%27${tag.split('#trends')[1]}%27`;
+      let trendsUrl = `https://mlspro.staging.mlslistings.com/odata/Growth/MarketTrends?$filter=Class%20eq%20%27Residential%20-%20Single%20Family%27%20and%20PeriodType%20eq%20%27Year%27%20and%20Period%20eq%20%272015%27and%20GeographyType%20eq%20%27Zip%27%20and%20GeographyName%20eq%20%27${tag.split('#trends')[1]}%27`;
           $.getJSON( trendsUrl )
             .done(function( json ) {
               $(tag).html(`
-                <div class="listing ui card full">
-                  PendingCount:${json.value[0].PendingCount}<br/>
-                  ActiveAvgDOM:${json.value[0].ActiveAvgDOM}<br/>
-                  ActiveAvgDOM:${json.value[0].ActiveAvgDOM}<br/>
+                <div class="trends ui">
+                  <div class="ui segments">
+                    <div class="ui">
+                      <div class="ui hidden divider"></div>
+                      <div class="ui equal width grid center aligned">
+
+                        <div class="trendHeader column">
+                          <div class="ui statistic">
+                            <div class="value">
+                              ${json.value[0].PendingCount}
+                            </div>
+                            <div class="label">
+                              Pending
+                            </div>
+                          </div>
+                        </div>
+                        <div class="column">
+                          <div class="ui statistic">
+                            <div class="value">
+                              ${json.value[0].ActiveAvgDOM}
+                            </div>
+                            <div class="label">
+                              DOM
+                            </div>
+                          </div>
+                        </div>
+                        <div class="column">
+                          <div class="ui statistic">
+                            <div class="value">
+                              ${json.value[0].ActiveCount}
+                            </div>
+                            <div class="label">
+                              Active
+                            </div>
+                          </div>
+                        </div>
+                      <div class="column">
+                        <div class="ui statistic">
+                          <div class="value">
+                            ${json.value[0].AvgMonthsToSell}
+                          </div>
+                          <div class="label">
+                            Avg MSI
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="ui secondary segment no-border-radius">
+                      <div class="grid ui equal width">
+                        <div class="column">
+                          <i class="trendIcon circular line chart icon float left no-padding-top no-padding-bottom"></i>
+                          <h5 class="trendLabel header">
+
+
+                          ${json.value[0].County} County - ${json.value[0].Period} - ${json.value[0].GeographyName}</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
                 `);
             })
