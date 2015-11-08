@@ -23,7 +23,6 @@ export default class NewChat extends React.Component {
       }]),
       context: this,
       then: () => {
-        console.log('POSTED TO ' + chatBase);
       }
     });
     this.refs.title.value = '';
