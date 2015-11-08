@@ -102,6 +102,9 @@ export default class SideBySide extends React.Component {
             </Segment>
           </Column>
         </Grid>
+        <Column styles="sixteen">
+          <PersonalNotepad state={state} />
+        </Column>
         <Grid styles="ui stackable">
           <Column styles="sixteen">
             <Segments styles="piled">
@@ -134,9 +137,6 @@ export default class SideBySide extends React.Component {
             </Segments>
           </Column>
         </Grid>
-        <Column styles="sixteen">
-          <PersonalNotepad state={state} />
-        </Column>
     </div>
     );
   }

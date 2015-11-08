@@ -98,8 +98,9 @@ export default class PersonalNotefields extends React.Component {
     let notes =[];
     if(comp_fields.length > 0 ){
       notes = comp_fields.map((k) => {
+        let uniqueKey = _.uniqueId('comp_fields');
         return (
-          <div className="ui segment secondary" key={k.label}>
+          <div className="ui segment secondary" key={uniqueKey}>
             <i className="delete icon something floated right" data-noteid={k.label} onClick={this._removeNote}></i>
             <h5 className="no-margin-top">{k.label}</h5>{k.text}
           </div>
@@ -112,11 +113,13 @@ export default class PersonalNotefields extends React.Component {
     } else {
       noteItemList = null;
     }
+    let empty_fields = _.where(fields, {text: null});
 
     let record = Object.keys(fields).map((k) => {
-      let _class = "item";
+      let _class = "label tag ui orange";
 
-      if( _.where(comp_fields, {label: k}).length > 0){
+      if( _.where(comp_fields, {label: k}).length > 0 ||
+          fields[k]==null){
         _class += " hide";
       }
 
@@ -132,12 +135,12 @@ export default class PersonalNotefields extends React.Component {
         <Grid styles="ui">
           <Column styles="sixteen">
             <Segments>
-              {noteItemList}
               <Segment>
                 <div className="ui relaxed divided list">
                   {record}
                 </div>
               </Segment>
+              {noteItemList}
             </Segments>
           </Column>
         </Grid>

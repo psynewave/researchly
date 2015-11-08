@@ -685,6 +685,13 @@ div#paperChat div#noteBody {
   padding-top: 40px;
 }
 
+#reactInnerModal .label.tag.ui{
+  margin-right:10px;
+  margin-bottom:10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 div#paperChat div#noteRow {
     height: 186px;
     position: relative;

@@ -20,7 +20,7 @@ export default class PersonalNotepad extends React.Component{
         <Column styles="sixteen">
             <Segments>
               <h5 className="ui top attached header light-grey">
-                Comparables Fields
+                Comparable Fields
               </h5>
               <PersonalFields state={this.props.state}></PersonalFields>
             </Segments>

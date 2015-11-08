@@ -132,28 +132,6 @@ export default class TaxDetails extends React.Component {
             </Segment>
           </Column>
         </Grid>
-        <Grid styles="ui stackable">
-          <Column styles="eight">
-            <Segments styles="piled">
-            <h5 className="ui top attached header light-grey">
-              Median Sale Price:
-            </h5>
-            <Segment styles="attached">
-              <Chart label="Period" column="MedSalePrice" drillDown="3"></Chart>
-            </Segment>
-            </Segments>
-          </Column>
-          <Column styles="eight">
-            <Segments styles="piled">
-            <h5 className="ui top attached header light-grey">
-              Median Days On Market:
-            </h5>
-            <Segment styles="attached">
-              <Chart label="Period" column="SoldMedDOM" drillDown="3"></Chart>
-            </Segment>
-            </Segments>
-          </Column>
-        </Grid>
       </Column>
     </Grid>
     <Grid styles="ui stackable">
@@ -174,6 +152,28 @@ export default class TaxDetails extends React.Component {
         </Segments>
       </Column>
       </Row>
+    </Grid>
+    <Grid styles="ui stackable">
+      <Column styles="eight">
+        <Segments styles="piled">
+        <h5 className="ui top attached header light-grey">
+          Median Sale Price:
+        </h5>
+        <Segment styles="attached">
+          <Chart label="Period" column="MedSalePrice" drillDown="3"></Chart>
+        </Segment>
+        </Segments>
+      </Column>
+      <Column styles="eight">
+        <Segments styles="piled">
+        <h5 className="ui top attached header light-grey">
+          Median Days On Market:
+        </h5>
+        <Segment styles="attached">
+          <Chart label="Period" column="SoldMedDOM" drillDown="3"></Chart>
+        </Segment>
+        </Segments>
+      </Column>
     </Grid>
     </div>
     );
