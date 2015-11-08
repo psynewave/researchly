@@ -3,7 +3,7 @@ import AppBody from './appBody';
 import Footer from './footer';
 import MarketCopy from './marketcopy';
 import Header from './headerloggedout';
-import ChatBox from '../chat/ChatBox';
+import ChatBox from '../chat/chatbox';
 
 export default class LoggedOutContent extends React.Component {
 
