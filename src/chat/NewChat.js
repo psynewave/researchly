@@ -1,27 +1,18 @@
 import React from 'react';
 import Rebase from 're-base';
 var base = Rebase.createClass('https://researchly.firebaseio.com/');
+import Store from '../stores/AppStore';
 
 export default class NewChat extends React.Component {
   _newChat(e){
     e.preventDefault();
-
-    /*
-     * Here, we call .post on the '/chats' ref
-     * of our Firebase.  This will do a one-time 'set' on
-     * that ref, replacing it with the data prop in the
-     * options object.
-     *
-     * Keeping with the immutable data paradigm in React,
-     * you should never mutate, but only replace,
-     * the data in your Firebase (ie, use concat
-     * to return a mutated copy of your state)
-    */
     let name = this.props.profile ? this.props.profile.name : 'anonymous';
     let avatar = this.props.profile ? this.props.profile.picture : '../Portal/images/alan.png';
+
     let chatBase = 'ChatRoom';
-    if(this.props.apn){
-      chatBase = 'history/' + this.props.apn + '/comments';
+    let apn = Store.APN();
+    if(apn){
+      chatBase = 'history/' + apn + '/comments';
     }
 
     base.post(chatBase, {
@@ -31,17 +22,11 @@ export default class NewChat extends React.Component {
         title: this.refs.title.value
       }]),
       context: this,
-      /*
-       * This 'then' method will run after the
-       * post has finished.
-       */
       then: () => {
-        console.log('POSTED');
+        console.log('POSTED TO ' + chatBase);
       }
     });
-
     this.refs.title.value = '';
-
   }
   render(){
     return (

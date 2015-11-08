@@ -14,7 +14,7 @@ export default class NotePad extends React.Component{
     if(this.props.profile){
       let noteBase = this.props.profile.name;
       if(this.props.apn){
-        noteBase =  this.props.apn + '/' + nodeBase;
+        noteBase =  'history/' + this.props.apn + '/' + nodeBase;
       }
       console.log(noteBase);
       if(noteBase){

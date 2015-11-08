@@ -15,6 +15,7 @@ let _transactions = [];
 let _parcels = [];
 let _trends = [];
 let _level = 3;
+let _apn = null;
 export default class BaseStore extends EventEmitter {
     constructor() {
         super();
@@ -73,6 +74,10 @@ export default class BaseStore extends EventEmitter {
     Level(){
       return _level;
     }
+
+    APN(){
+      return _apn;
+    }
 }
 
 let AppStore = new BaseStore();
@@ -113,7 +118,11 @@ Dispatcher.register(action => {
         case Constants.NEW_NOTES:
             _notes=action.payload;
             AppStore.emitChange(Constants.NOTES_RECEIVED);
-            break;            
+            break;
+        case Constants.REBIND_PAPER:
+            _apn = action.payload;
+            AppStore.emitChange(Constants.APN_CHANGED);
+            break;
         default:
             // no op
     }

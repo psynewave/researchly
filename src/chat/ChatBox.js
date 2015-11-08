@@ -3,7 +3,8 @@ import Container from './chatcontainer';
 import NewChat from './NewChat';
 import NotePad from '../notes/NotePad';
 import Rebase from 're-base';
-
+import Store from '../stores/AppStore';
+import Constants from '../constants/consts.js';
 var base = Rebase.createClass('https://researchly.firebaseio.com/');
 
 export default class ChatBox extends React.Component {
@@ -16,22 +17,34 @@ export default class ChatBox extends React.Component {
     };
     this.fullChat = this.fullChat.bind(this);
     this.toggleChat = this.toggleChat.bind(this);
+    this._init = this.init.bind(this);
   }
+
+  init(){
+    if(this.ref){
+       base.removeBinding(this.ref);
+    }
+    let chatBase = 'ChatRoom';
+    let apn = Store.APN();
+    if(apn){
+      chatBase = 'history/' + apn + '/comments';
+    }
+    this.ref = base.bindToState(chatBase, {
+       context: this,
+       state: 'messages',
+       asArray: true
+     });
+  }
+
   componentWillMount(){
-  /*
-   * Here we call 'bindToState', which will update
-   * our local 'messages' state whenever our 'chats'
-   * Firebase endpoint changes.
-   */
-   let chatBase = 'ChatRoom';
-   if(this.props.apn){
-     chatBase = 'history/' + this.props.apn + '/comments';
-   }
-   base.bindToState(chatBase, {
-      context: this,
-      state: 'messages',
-      asArray: true
-    });
+      //this.init();
+      Store.addChangeListener(Constants.APN_CHANGED, this._init);
+  }
+  componentWillUnmount(){
+    Store.removeChangeListener(Constants.APN_CHANGED, this._init);
+    if(this.ref){
+      base.removeBinding(this.ref);
+    }
   }
 
   componentDidMount(){

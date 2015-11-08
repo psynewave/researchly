@@ -2,6 +2,8 @@ import React from 'react';
 import Rebase from 're-base';
 import Message from './Message.js';
 var base = Rebase.createClass('https://researchly.firebaseio.com/chat');
+import Store from '../stores/AppStore';
+import Constants from '../constants/consts.js';
 
 export default class Container extends React.Component {
   constructor(props){
@@ -10,70 +12,54 @@ export default class Container extends React.Component {
       messages: [],
       show: null
     }
+    this._init = this.init.bind(this);
+
   }
+  init(){
+    if(this.ref){
+       base.removeBinding(this.ref);
+    }
+    let chatBase = 'ChatRoom';
+    let apn = Store.APN();
+    if(apn){
+      chatBase = 'history/' + apn + '/comments';
+    }
+    this.ref = base.bindToState(chatBase, {
+       context: this,
+       state: 'messages',
+       asArray: true
+     });
+  }
+
   componentWillMount(){
-
-    /*
-     * We bind the 'chats' firebase endopint to our 'messages' state.
-     * Anytime the firebase updates, it will call 'setState' on this component
-     * with the new state.
-     *
-     * Any time we call 'setState' on our 'messages' state, it will
-     * updated the Firebase '/chats' endpoint. Firebase will then emit the changes,
-     * which causes our local instance (and any other instances) to update
-     * state to reflect those changes.
-     */
-     let chatBase = 'ChatRoom';
-     if(this.props.apn){
-       chatBase = 'history/' + this.props.apn + '/comments';
-     }
-
-    this.ref = base.syncState(chatBase, {
-      context: this,
-      state: 'messages',
-      asArray: true
-    });
+      this.init();
+      Store.addChangeListener(Constants.APN_CHANGED, this._init);
   }
   componentWillUnmount(){
-    /*
-     * When the component unmounts, we remove the binding.
-     * Invoking syncState (or bindToState or listenTo)
-     * will return a reference to that listener (see line 30).
-     * You will use that ref to remove the binding here.
-     */
-
-    base.removeBinding(this.ref);
+    Store.removeChangeListener(Constants.APN_CHANGED, this._init);
+    if(this.ref){
+      base.removeBinding(this.ref);
+    }
   }
+
+
   _removeMessage(index, e){
     e.stopPropagation();
     var arr = this.state.messages.concat([]);
     arr.splice(index, 1);
-
-    /*
-     * Calling setState here will update the '/chats' ref on our Firebase.
-     * Notice that I'm also updating the 'show' state.  Because there is no
-     * binding to our 'show' state, it will update the local 'show' state normally,
-     * without going to Firebase.
-     */
-
     this.setState({
       messages: arr,
       show: null
     });
   }
-  _toggleView(index){
 
-    /*
-     * Because nothing is bound to our 'show' state, calling
-     * setState on 'show' here will do nothing with Firebase,
-     * but simply update our local state like normal.
-     */
+  _toggleView(index){
     this.setState({
       show: index
     });
   }
   render(){
-    var items = this.state.messages.reverse();
+    var items = this.state.messages;
     var messages = items.map( (item, index) => {
       return (
         <Message

@@ -18,6 +18,12 @@ export default {
     Assessments.fetch();
     Transactions.fetch();
   },
+  rebindPaper(payload){
+    Dispatcher.dispatch({
+        actionType: Constants.REBIND_PAPER,
+        payload
+    });
+  },
   geoCode(loc){
       Geo.resolve(loc);
   },
