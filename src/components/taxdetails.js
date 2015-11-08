@@ -7,7 +7,9 @@ import Segment from './segment';
 import Segments from './segments';
 import CrossGrid from './crossgrid';
 import 'imports?$=jquery,jQuery=jquery!../../css/semantic/semantic.min.js';
-import ChatBox from '../chat/chatbox'
+import ChatBox from '../chat/chatbox';
+import PersonalNotepad from './personalnotepad';
+
 export default class TaxDetails extends React.Component {
   constructor() {
     super();
@@ -139,6 +141,11 @@ export default class TaxDetails extends React.Component {
           </Segment>
         </Segments>
       </Column>
+      </Row>
+      <Row>
+        <Column styles="sixteen">
+          <PersonalNotepad state={state} />
+        </Column>
       </Row>
     </Grid>
     <Grid>
