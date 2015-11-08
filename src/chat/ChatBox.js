@@ -1,35 +1,20 @@
 import React from 'react';
 import Container from './chatcontainer';
-import NewChat from './NewChat';
 import NotePad from '../notes/NotePad';
 import Rebase from 're-base';
-
-var base = Rebase.createClass('https://researchly.firebaseio.com/');
-
+import Store from '../stores/AppStore';
+import Constants from '../constants/consts.js';
 export default class ChatBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      messages: [],
       fullsize: false,
       chatHidden: false,
     };
   }
   componentWillMount(){
-  /*
-   * Here we call 'bindToState', which will update
-   * our local 'messages' state whenever our 'chats'
-   * Firebase endpoint changes.
-   */
-   let chatBase = 'ChatRoom';
-   if(this.props.apn){
-     chatBase = 'history/' + this.props.apn + '/comments';
-   }
-   base.bindToState(chatBase, {
-      context: this,
-      state: 'messages',
-      asArray: true
-    });
+  }
+  componentWillUnmount(){
   }
 
   componentDidMount(){
@@ -67,17 +52,14 @@ export default class ChatBox extends React.Component {
           <div id="chatRow" className="eight wide column chat">
             <div id="chatContainer" className="ui segments">
               <div id="innerChatContainer" className="ui segment">
-                <Container apn={props.apn} />
-              </div>
-              <div className="ui segment">
-                <NewChat apn={props.apn} profile={props.profile} chats={ this.state.messages } />
+                <Container profile={props.profile} />
               </div>
             </div>
           </div>
           <div id="noteRow" className="eight wide column chat">
             <div id="noteContainer" className="ui segments">
               <div id="innerNoteContainer" className="">
-                <NotePad apn={props.apn} profile={props.profile}/>
+                <NotePad profile={props.profile}/>
               </div>
             </div>
           </div>

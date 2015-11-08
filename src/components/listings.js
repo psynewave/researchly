@@ -35,6 +35,7 @@ export default class Listings extends Component {
     let taxDetailAddress = $(e.target).parents('.taxitem').data('header');
     let transaction = _.where(state.transactions, {'apn': apn})[0];
 
+    Actions.rebindPaper(apn);
     this.setState({
       apn: apn,
       parcel: parcel,
