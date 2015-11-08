@@ -322,6 +322,10 @@ header .ui.popup {
     box-sizing: border-box;
 }
 
+h2#bigLogo {
+    margin-bottom: 0;
+}
+
 /** End **/
 
 /*******************************
@@ -436,7 +440,8 @@ div#factsTable {
 }
 
 div#ownersTable {
-    margin-top: 15px;
+    /* margin-top: 15px; */
+    margin-bottom: 0;
 }
 
 /* Trends Area */

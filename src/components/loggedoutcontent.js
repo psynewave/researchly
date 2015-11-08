@@ -14,7 +14,7 @@ export default class LoggedOutContent extends React.Component {
 
     return (
       <AppBody>
-        <Header login={props.login}/>
+        <Header login={props.login} appName={props.appName}/>
         <MarketCopy login={props.login}/>
         <Footer copyYear={_state.copyYear} />
       </AppBody>

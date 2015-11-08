@@ -79,6 +79,12 @@ export default class TaxDetails extends React.Component {
             </Segment>
           </Column>
           <Column styles="eight">
+            <Segments id="ownersTable" styles="piled">
+              <h5 className="ui top attached label">
+                Owners:
+              </h5>
+              {owners}
+            </Segments>
             <Segment id="factsTable">
               <h5 className="ui top attached label">
                 Facts:
@@ -124,12 +130,6 @@ export default class TaxDetails extends React.Component {
                 </tbody>
               </table>
             </Segment>
-            <Segments id="ownersTable" styles="piled">
-              <h5 className="ui top attached label">
-                Owners:
-              </h5>
-              {owners}
-            </Segments>
           </Column>
         </Grid>
         <Grid styles="ui stackable">
@@ -158,6 +158,11 @@ export default class TaxDetails extends React.Component {
     </Grid>
     <Grid styles="ui stackable">
       <Row>
+        <Column styles="sixteen">
+          <PersonalNotepad state={state} />
+        </Column>
+      </Row>
+      <Row>
       <Column styles="sixteen">
         <Segments styles="piled">
           <h5 className="ui top attached header light-grey">
@@ -167,17 +172,6 @@ export default class TaxDetails extends React.Component {
             <iframe className="streetviewFrame" scrolling="no" frameBorder="0" src={streetViewUrl} width="100%" height="400px"></iframe>
           </Segment>
         </Segments>
-      </Column>
-      </Row>
-      <Row>
-        <Column styles="sixteen">
-          <PersonalNotepad state={state} />
-        </Column>
-      </Row>
-    </Grid>
-    <Grid>
-      <Row>
-      <Column id="detailChatHolder" styles="sixteen">
       </Column>
       </Row>
     </Grid>

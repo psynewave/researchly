@@ -107,7 +107,7 @@ export default class App extends Component {
         </div>
     } else {
       contentView = <div>
-        <LoggedOutContent state={this.state} login={this.showLock}/>
+        <LoggedOutContent state={this.state} login={this.showLock} appName={state.appName}/>
         </div>
     }
 

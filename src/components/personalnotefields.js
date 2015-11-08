@@ -96,7 +96,7 @@ export default class PersonalNotefields extends React.Component {
     let fields = this.props.state;
     let comp_fields = this.state.notes;
     let notes =[];
-    if(comp_fields){
+    if(comp_fields.length > 0 ){
       notes = comp_fields.map((k) => {
         return (
           <div className="ui segment secondary" key={k.label}>
@@ -109,6 +109,8 @@ export default class PersonalNotefields extends React.Component {
       noteItemList = <Segments id="noteItemList">
         {notes}
       </Segments>
+    } else {
+      noteItemList = null;
     }
 
     let record = Object.keys(fields).map((k) => {

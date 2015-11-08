@@ -40,7 +40,6 @@ export default class NotePad extends React.Component{
     Store.addChangeListener(Constants.APN_CHANGED, this._init);
   }
   componentWillUpdate(){
-    this.init();
   }
   componentWillUnmount(){
     Store.removeChangeListener(Constants.APN_CHANGED, this._init);

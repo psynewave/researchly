@@ -79,6 +79,7 @@ export default class Listings extends Component {
     let state = this.state;
     let comps = state.comps ? state.comps : null;
     let compDetails = state.compDetails ? state.compDetails : null;
+
     if(comps.length) {
       let _comps;
       _comps = comps.map((c, k) => {
