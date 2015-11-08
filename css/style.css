@@ -459,6 +459,12 @@ div#trends canvas {
     min-height: 250px;
 }
 
+div#trends-charts .avatar.right {
+    position: absolute;
+    right: 5px;
+    top: 1px;
+}
+
 /* Trends and Graphs Styles */
 
 div#trends canvas, div.detailView canvas {

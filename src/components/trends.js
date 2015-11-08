@@ -29,6 +29,8 @@ export default class Trends extends React.Component {
               <Segment styles="attached chart no-margin-bottom">
                 <h5 className="ui top attached label">
                   Sold Avg DOM
+                  <img className="avatar right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
+
                 </h5>
                 <Chart group="search" label="Period" column="SoldAvgDOM"></Chart>
               </Segment>
@@ -37,6 +39,8 @@ export default class Trends extends React.Component {
             <Segment styles="attached chart no-margin-bottom">
               <h5 className="ui top attached label">
                 Median Sale Price Per Sqft
+                <img className="avatar right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
+
               </h5>
               <Chart group="search" label="Period" column="MedSalePricePerSqft"></Chart>
             </Segment>
@@ -45,6 +49,8 @@ export default class Trends extends React.Component {
             <Segment styles="attached chart no-margin-bottom">
               <h5 className="ui top attached label">
                 Sold Median List Price
+                <img className="avatar right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
+
               </h5>
               <Chart group="search" label="Period" column="SoldMedListPrice"></Chart>
             </Segment>
@@ -53,6 +59,8 @@ export default class Trends extends React.Component {
             <Segment styles="attached chart no-margin-bottom">
               <h5 className="ui top attached label">
                 Sale Volume
+                <img className="avatar right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
+
               </h5>
               <Chart group="search" label="Period" column="SaleVolume"></Chart>
             </Segment>
