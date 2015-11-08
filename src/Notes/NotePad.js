@@ -16,7 +16,6 @@ export default class NotePad extends React.Component{
       if(this.props.apn){
         noteBase =  this.props.apn + '/' + nodeBase;
       }
-      console.log(noteBase);
       if(noteBase){
         this.ref = base.syncState(noteBase, {
           context: this,

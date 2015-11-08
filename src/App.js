@@ -48,7 +48,6 @@ export default class App extends Component {
 
   showLock(){
     this.lock.show();
-    console.log('ola');
   }
 
   getLock() {

@@ -36,7 +36,7 @@ export default class NewChat extends React.Component {
        * post has finished.
        */
       then: () => {
-        console.log('POSTED');
+        //console.log('POSTED');
       }
     });
 

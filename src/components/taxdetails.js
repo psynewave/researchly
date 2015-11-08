@@ -17,12 +17,29 @@ export default class TaxDetails extends React.Component {
 
   componentWillMount(){
     let props = this.props;
+    let that = this;
     let state = props.state;
-    let transactionUrl = `https://rets.io/api/v1/pub/transactions?access_token=43224a475a157d1286c4b16dc75d5a7c&id=${state.id}`
-    console.log(state);
-    $.getJSON( transactionUrl, function( data ) {
-      console.log(data);
-    });
+    let transactionUrl = `https://rets.io/api/v1/pub/parcels/9797740/transactions?access_token=43224a475a157d1286c4b16dc75d5a7c`;
+    let parcelUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&id=${state.id}`
+
+    //Fuck it hackathon baby :)
+    $.getJSON( parcelUrl )
+      .done(function( json ) {
+        this.setState({
+          parcel: json.bundle[0]
+        });
+        let trannyUrl = `${this.state.parcel.transactionsUrl}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
+        $.getJSON( trannyUrl , function( data ) {
+          console.log(data);
+          this.setState({
+            transactions: data.bundle[0]
+          });
+        }.bind(this));
+      }.bind(this))
+      .fail(function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
+    }.bind(this));
   }
 
   render () {
