@@ -16,16 +16,21 @@ export default class Message extends React.Component {
                   <div class="content">
                     <a class="header">${json.bundle.address} - ${numeral(json.bundle.price).format('$0,0')}</a>
                     <div class="description">
-                      ${json.bundle.publicRemarks}
+                        <h5 class="header metadata">
+                          <span>
+                            Beds - ${json.bundle.bedrooms}
+                          </span>
+                          <span>
+                            Baths - ${json.bundle.baths}
+                          </span>
+                        </h5>
+                        ${json.bundle.publicRemarks}
                     </div>
+
                   </div>
                   <div class="extra content">
-                    <span>
-                      Beds - ${json.bundle.bedrooms}
-                    </span>
-                    <span>
-                      Baths - ${json.bundle.baths}
-                    </span>
+                    <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
+                    <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
                 </div>
               </div>
               <div class="ui items listing tiny">
@@ -40,8 +45,10 @@ export default class Message extends React.Component {
                       <span class="stay">${json.bundle.bedrooms} bds ${json.bundle.baths} bths</span>
                     </div>
                     <div class="description">
-
-                    </div>
+                      <br />
+                      <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
+                      <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
+                  </div>
                   </div>
                 </div>
                 `);
@@ -58,9 +65,59 @@ export default class Message extends React.Component {
           $.getJSON( apnUrl )
             .done(function( json ) {
               $(tag).html(`
-                <div class="listing ui card full">
-                  ${json.bundle[0].county}
-                  ${json.bundle[0].landUseDescription}
+                <div class="apnTable">
+                  <table class="ui fixed single striped line celled table center aligned">
+                    <thead>
+                      <tr><th class="aligned left" colspan="4">
+                        ${json.bundle[0].apn}
+                      </th>
+                    </tr></thead>
+                    <tbody>
+                      <tr>
+                        <td>${json.bundle[0].building.bedrooms}</td>
+                        <td>${json.bundle[0].county}</td>
+                        <td>${numeral(json.bundle[0].lotSizeSquareFeet).format('0,0')}</td>
+                        <td>${json.bundle[0].building.condition}</td>
+                      </tr>
+                      <tr>
+                        <td>Beds</td>
+                        <td>County</td>
+                        <td>Lot Sq Ft</td>
+                        <td>Condition</td>
+                      </tr>
+                      <tr>
+                        <td>${json.bundle[0].building.totalRooms}</td>
+                        <td>${json.bundle[0].building.baths}</td>
+                        <td>${json.bundle[0].building.yearBuilt}</td>
+                        <td>${json.bundle[0].landUseCode}</td>
+                      </tr>
+                      <tr>
+                        <td>Rooms</td>
+                        <td>Baths</td>
+                        <td>Yr Built</td>
+                        <td>Land Use</td>
+                      </tr>
+                      <tr>
+                        <td>${json.bundle[0].fips}</td>
+                        <td>${json.bundle[0].taxYear}</td>
+                        <td>${json.bundle[0].taxAmount}</td>
+                        <td>${json.bundle[0].totalValue}</td>
+                      </tr>
+                      <tr>
+                        <td>Fips</td>
+                        <td>Tax Year</td>
+                        <td>Tax Amount</td>
+                        <td>Total Value</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="4">
+                          <img class="avatar left" src="./Portal/images/retsly-logo.png" width="80px"/>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
                 `);
             })
@@ -129,9 +186,8 @@ export default class Message extends React.Component {
                         <div class="column">
                           <i class="trendIcon circular line chart icon float left no-padding-top no-padding-bottom"></i>
                           <h5 class="trendLabel header">
-
-
                           ${json.value[0].County} County - ${json.value[0].Period} - ${json.value[0].GeographyName}</h5>
+                        <img class="avatar" src="./Portal/images/mlslistings-logo.png" width="80px"/>
                         </div>
                       </div>
                     </div>

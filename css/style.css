@@ -727,6 +727,25 @@ div#paperChat.fullChat div#chatWindow {
     height: 100%;
 }
 
+.apnTable .avatar {
+    float: left;
+}
+
+.apnTable thead th {
+    text-align: left!important;
+}
+
+.trends.ui .avatar {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 60px;
+}
+
+.listing.ui.card img.logo.right {
+    float: right;
+}
+
 /*******************************
   Setting overflow off in app body
   if the full size chat is on
