@@ -197,10 +197,6 @@ footer {
 
 /** Logged Out **/
 
-header.logged-out {
-    padding-top: 70px;
-}
-
 h2#bigLogo {
     color: white;
 }
