@@ -13,13 +13,13 @@ export default class PersonalNotefields extends React.Component {
   constructor() {
     super();
     this.state={
-      notes:null
+      notes: []
     }
     this._addNote = this.addNote.bind(this);
     this._removeNote = this.removeNote.bind(this);
   }
   addNote(e) {
-    let apn = $(e.target).parents('.detailView').data('apn');
+    let apn = String($(e.target).parents('.detailView').data('apn'));
     let label = $(e.target).text();
     let note = {
       label: label,
@@ -37,6 +37,7 @@ export default class PersonalNotefields extends React.Component {
     }
     let apnNotes = notes[noteIndex];
     let labelIndex = _.findLastIndex(apnNotes.items,{'label':note.label});
+
     if(labelIndex < 0){
       apnNotes.items.push(note);
     }else{
@@ -46,6 +47,10 @@ export default class PersonalNotefields extends React.Component {
     this.setState({
       notes:apnNotes.items
     });
+  }
+
+  componentWillMount() {
+
   }
 
   removeNote(e){
@@ -67,6 +72,8 @@ export default class PersonalNotefields extends React.Component {
       itemlist = null;
     }
 
+    console.log(itemlist);
+
     this.setState({
       notes:itemlist
     });
@@ -82,7 +89,9 @@ export default class PersonalNotefields extends React.Component {
     let click = this._addNote;
     let stateNotes = _state.notes ? _state.notes : null;
 
+console.log(Store.Notes());
     if(stateNotes){
+
       notes = _state.notes.map((k) => {
         return (
           <div className="ui segment secondary" key={k.label}>
@@ -101,7 +110,7 @@ export default class PersonalNotefields extends React.Component {
       let _class = "item";
 
       if( _.where(_state.notes, {label: k}).length > 0){
-        _class += " hidden";
+        _class += " hide";
       }
 
       return (

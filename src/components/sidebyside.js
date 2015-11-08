@@ -6,7 +6,7 @@ import Segment from './segment';
 import Segments from './segments';
 import CrossGrid from './crossgrid';
 import Actions from '../actions/appActions';
-import PersonalNotepad from './personalnotepad';
+import PersonalNotes from './personalnotes';
 
 export default class SideBySide extends React.Component {
   constructor(props) {
@@ -42,6 +42,7 @@ export default class SideBySide extends React.Component {
 
     return (
       <div id={props.id} className={classNames(props.styles, "detailView")}>
+        <p>apn {state.apn}</p>
         <Grid styles="ui stackable">
           <Column styles="sixteen">
             <Segment styles="piled">
@@ -133,7 +134,7 @@ export default class SideBySide extends React.Component {
           </Column>
         </Grid>
         <Column styles="sixteen">
-          <PersonalNotepad state={state} />
+          <PersonalNotes apn={state.apn} />
         </Column>
     </div>
     );

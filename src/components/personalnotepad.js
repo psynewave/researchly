@@ -37,6 +37,11 @@ export default class PersonalNotepad extends React.Component{
       loading: false
     });
   }
+  componentWillMount() {
+    this.setState({
+      list: Store.Notes()
+    })
+  }
   componentWillUnmount(){
     //base.removeBinding(this.ref);
   }
@@ -53,6 +58,7 @@ export default class PersonalNotepad extends React.Component{
     });
   }
   render(){
+
     return (
       <Grid styles="ui">
         <Column styles="sixteen">
