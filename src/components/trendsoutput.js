@@ -5,6 +5,7 @@ import Column from './column';
 import Container from './container';
 import Segment from './segment';
 import Listings from './listings';
+import Trends from './trends';
 import Comps from './comps';
 export default class TrendsOutput extends React.Component {
   render () {
@@ -14,7 +15,7 @@ export default class TrendsOutput extends React.Component {
     return (
       <Grid id="trends-output" styles="ui stackable">
         <Column id="trends" styles="padded-left ten">
-          <p>Trends will go here</p>
+          <Trends />
         </Column>
         <Column id="tax-listings" styles="padded-right six">
           <Comps />
