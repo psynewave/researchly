@@ -1,13 +1,14 @@
 import React from 'react';
-import Notes from './Notes';
 import Rebase from 're-base';
 var base = Rebase.createClass('https://researchly.firebaseio.com/');
 import Store from '../stores/AppStore';
 import Constants from '../constants/consts.js';
+import Notes from './Notes';
 
 export default class NotePad extends React.Component{
   constructor(props){
     super(props);
+    this.ref=null;
     this.state = {
       notes: []
     };
@@ -17,10 +18,10 @@ export default class NotePad extends React.Component{
   init(){
     if(this.ref){
        base.removeBinding(this.ref);
+       this.ref=null;
     }
-
     if(this.props.profile){
-      let noteBase = this.props.profile.name;
+      let noteBase = this.props.profile.nickname;
       let apn = Store.APN();
       if(apn){
         noteBase =  'history/' + apn + '/' + noteBase;
@@ -36,15 +37,18 @@ export default class NotePad extends React.Component{
   }
 
   componentDidMount(){
-    this.init();
     Store.addChangeListener(Constants.APN_CHANGED, this._init);
   }
   componentWillUpdate(){
+    if(!this.ref){
+      this.init();
+    }
   }
   componentWillUnmount(){
     Store.removeChangeListener(Constants.APN_CHANGED, this._init);
     if(this.ref){
       base.removeBinding(this.ref);
+      this.ref=null;
     }
   }
   handleAddNote(newNote){
