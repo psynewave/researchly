@@ -9,11 +9,17 @@ export default class ChatBox extends React.Component {
     super(props);
     this.state = {
       fullsize: false,
-      chatHidden: false,
+      chatHidden: false
     };
+    this._init = this.init.bind(this);
   }
-  componentWillMount(){
+
+  init(){
+    this.setState({
+      apn: Store.APN()
+    });
   }
+
   componentWillUnmount(){
   }
 
@@ -27,10 +33,31 @@ export default class ChatBox extends React.Component {
     // });
   }
 
+  componentWillMount(){
+      this.init();
+      Store.addChangeListener(Constants.APN_CHANGED, this._init);
+  }
+
   render(){
+
+    let chatLabel;
     let state = this.state;
     let props = this.props;
     let _state = props.state;
+    let apn = state.apn ? state.apn : null;
+
+    if(apn){
+      chatLabel = <span id="paperLabel" className="ui blue ribbon label">
+        <i className="home icon"></i>
+        {apn}
+      </span>
+    } else {
+      chatLabel = <span id="paperLabel" className="ui blue ribbon label">
+        <i className="users icon"></i>
+        Community
+      </span>
+    }
+
     return (
       <div id="paperChat" className={ props.fullsize ? 'ui grid fullChat' : props.chatHidden ? 'chatoff' : 'ui grid'}>
         <div id="paperControls" className="row">
@@ -52,6 +79,7 @@ export default class ChatBox extends React.Component {
           <div id="chatRow" className="eight wide column chat">
             <div id="chatContainer" className="ui segments">
               <div id="innerChatContainer" className="ui segment">
+                {chatLabel}
                 <Container profile={props.profile} />
               </div>
             </div>

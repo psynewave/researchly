@@ -76,7 +76,7 @@ export default class Container extends React.Component {
     });
 
     return (
-      <span>
+      <span id="chatRail">
       <div id="chatBody" className='ui segment'>
         <div id="chatHeader" className="ui">
           <div className="messageCount ui blue circular label">{ (this.state.messages.length || 0) }</div>
@@ -85,7 +85,7 @@ export default class Container extends React.Component {
           { messages }
         </div>
       </div>
-      <div className="ui segment">
+      <div id="chatInput" className="ui segment">
         <NewChat profile={props.profile} chats={ items} />
       </div>
     </span>

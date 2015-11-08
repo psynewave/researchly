@@ -606,15 +606,33 @@ div#paperChat div#chatContainer {
 }
 
 div#paperChat div#innerChatContainer {
-    height: 90%;
-    padding-bottom: 0;
+    height: 185px;
+    padding: 0;
+    border-radius: 5px;
 }
 
 div#paperChat div#chatBody {
-    height: 170px;
-    overflow: scroll;
-    border: none;
-    box-shadow: none;
+  height: 100%;
+  /* overflow: scroll; */
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding-top: 40px;
+}
+
+div#chatInput {
+  margin-top: 0;
+  border: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  border-top: 1px solid #ddd;
+  border-radius: 0;
+  background: white;
+  z-index: 9;
+}
+
+div#paperChat:not(.fullChat) div#chatInput {
+    border: 1px solid #ddd;
 }
 
 div#paperChat.fullChat div#chatPortal {
@@ -636,8 +654,8 @@ div#paperChat.fullChat div#chatBody {
 
 div#paperChat div.messageCount {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 15px;
+    top: 15px;
     z-index: 99;
 }
 
@@ -692,13 +710,33 @@ div#noteInput {
     margin-top: 0;
 }
 
-div#paperChat div#noteHeader .messageCount {
-    right: 15px;
-    top: 15px
+div#chatWindow {
+  height: 183px;
+  overflow: scroll;
+}
+
+span#paperLabel {
+    position: absolute;
+    z-index: 9;
+    left: -13px;
+    top: 8px;
 }
 
 div#paperChat.fullChat div#noteRow {
     height: 88%;
+}
+
+div#paperChat.fullChat div#chatWindow {
+    height: 100%;
+}
+
+/*******************************
+  Setting overflow off in app body
+  if the full size chat is on
+*******************************/
+
+div#fullChat {
+    overflow: hidden;
 }
 
 
