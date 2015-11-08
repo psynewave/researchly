@@ -4,7 +4,6 @@ import Column from './column';
 
 export default class PersonalNoteList extends React.Component{
   render(){
-
     let listItems = this.props.items.map((item, index) => {
       let uniqueKey = _.uniqueId('note');
       return (

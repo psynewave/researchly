@@ -30,7 +30,6 @@ export default class TaxDetails extends React.Component {
         });
         let trannyUrl = `${this.state.parcel.transactionsUrl}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
         $.getJSON( trannyUrl , function( data ) {
-          console.log(data);
           this.setState({
             transactions: data.bundle[0]
           });

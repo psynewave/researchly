@@ -18,7 +18,7 @@ export default class PersonalNotes extends React.Component {
   }
 
   getNotes() {
-    let apn = this.props.apn;
+    let apn = String(this.props.apn);
     let notes = Store.Notes().slice();
     let noteIndex = _.findLastIndex(notes, {'apn':apn});
     if( noteIndex >= 0 ){

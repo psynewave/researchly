@@ -13,7 +13,7 @@ export default class PersonalNotefields extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      notes:null
+      notes: []
     }
     this._addNote = this.addNote.bind(this);
     this._removeNote = this.removeNote.bind(this);
@@ -21,6 +21,7 @@ export default class PersonalNotefields extends React.Component {
 
   init() {
     let apn = this.props.state.apn;
+    console.log(apn);
     let notes = Store.Notes().slice();
     let noteIndex = _.findLastIndex(notes, {'apn':apn});
     if( noteIndex >= 0 ){
@@ -53,6 +54,7 @@ export default class PersonalNotefields extends React.Component {
     }
     let apnNotes = notes[noteIndex];
     let labelIndex = _.findLastIndex(apnNotes.items,{'label':note.label});
+
     if(labelIndex < 0){
       apnNotes.items.push(note);
     }else{
@@ -83,22 +85,19 @@ export default class PersonalNotefields extends React.Component {
     if(itemlist < 1){
       itemlist = null;
     }
-
     this.setState({
       notes:itemlist
     });
   }
 
   render () {
-    let notes, noteItemList;
-    let props = this.props;
-    let state = props.state;
-    let _state = this.state;
+    let noteItemList;
     let click = this._addNote;
-    let stateNotes = _state.notes ? _state.notes : null;
-
-    if(stateNotes){
-      notes = _state.notes.map((k) => {
+    let fields = this.props.state;
+    let comp_fields = this.state.notes;
+    let notes =[];
+    if(comp_fields){
+      notes = comp_fields.map((k) => {
         return (
           <div className="ui segment secondary" key={k.label}>
             <i className="delete icon something floated right" data-noteid={k.label} onClick={this._removeNote}></i>
@@ -112,11 +111,11 @@ export default class PersonalNotefields extends React.Component {
       </Segments>
     }
 
-    let record = Object.keys(state).map((k) => {
+    let record = Object.keys(fields).map((k) => {
       let _class = "item";
 
-      if( _.where(_state.notes, {label: k}).length > 0){
-        _class += " hidden";
+      if( _.where(comp_fields, {label: k}).length > 0){
+        _class += " hide";
       }
 
       return (
@@ -137,7 +136,6 @@ export default class PersonalNotefields extends React.Component {
                   {record}
                 </div>
               </Segment>
-
             </Segments>
           </Column>
         </Grid>
