@@ -7,7 +7,7 @@ export default class AppBody extends React.Component {
     let props = this.props;
 
     return (
-      <div className="app body">
+      <div id={props.id} className="app body">
         {props.children}
       </div>
     );

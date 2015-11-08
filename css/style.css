@@ -730,6 +730,15 @@ div#paperChat.fullChat div#chatWindow {
     height: 100%;
 }
 
+/*******************************
+  Setting overflow off in app body
+  if the full size chat is on
+*******************************/
+
+div#fullChat {
+    overflow: hidden;
+}
+
 
 /*******************************
              Marketing Styles
