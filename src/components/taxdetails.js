@@ -34,7 +34,6 @@ export default class TaxDetails extends React.Component {
     }
     return (
       <div id={props.id} className={classNames(props.styles, "detailView")} data-apn={state.apn}>
-        <ChatBox apn={state.apn} profile={props.profile}></ChatBox>
 
         <Grid styles="ui stackable">
         <Column styles="sixteen">
@@ -141,9 +140,11 @@ export default class TaxDetails extends React.Component {
         </Segments>
       </Column>
       </Row>
+    </Grid>
+    <Grid>
       <Row>
-      <Column styles="sixteen">
-          Notepad will go here
+      <Column id="detailChatHolder" styles="sixteen">
+          <ChatBox apn={state.apn} profile={props.profile}></ChatBox>
       </Column>
       </Row>
     </Grid>

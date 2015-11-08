@@ -86,7 +86,7 @@ export default class Container extends React.Component {
     });
 
     return (
-      <div className='ui comments'>
+      <div id="chatBody" className='ui comments'>
         <h3 className="ui dividing header">Messages ({ (this.state.messages.length || 0) })</h3>
           { messages }
       </div>

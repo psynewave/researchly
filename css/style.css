@@ -535,6 +535,11 @@ div#paperChat {
 
 div#paperChat.fullChat {
     height: calc(100vh - 90px);
+    overflow: hidden;
+}
+
+div#detailChatHolder div#paperChat {
+    position: relative;
 }
 
 div#grabHandles {
@@ -574,7 +579,34 @@ div#paperChat.fullChat .chat {
     height: 100vh
 }
 
+div#detailChatHolder div#paperChat {
+    position: relative;
+}
 
+div#chatRow {
+    position: relative;
+}
+
+div#chatBody {
+    height: 88%;
+    /* background: palegoldenrod; */
+    overflow: scroll;
+    position: absolute;
+    width: 100%;
+}
+
+div#chatContainer {
+    height: 80%;
+    overflow: hidden;
+    padding-bottom: 20px;
+    min-height: 161px;
+}
+
+div#chatContainer form {
+    position: absolute;
+    bottom: 12px;
+    width: 96%;
+}
 
 /*******************************
              Marketing Styles
