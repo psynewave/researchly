@@ -20,7 +20,11 @@ export default class ChatBox extends React.Component {
    * our local 'messages' state whenever our 'chats'
    * Firebase endpoint changes.
    */
-    base.bindToState('chats', {
+   let chatBase = 'ChatRoom';
+   if(this.props.apn){
+     chatBase = this.props.apn;
+   }
+   base.bindToState(chatBase, {
       context: this,
       state: 'messages',
       asArray: true
@@ -68,13 +72,13 @@ export default class ChatBox extends React.Component {
         <div className="row">
           <div id="chatRow" className="eight wide column chat">
             <div className="ui segment">
-              <NewChat profile={props.profile} chats={ this.state.messages } />
-              <Container />
+              <NewChat apn={props.apn} profile={props.profile} chats={ this.state.messages } />
+              <Container apn={props.apn} />
             </div>
           </div>
           <div id="noteRow" className="eight wide column chat">
             <div className="ui segment">
-              <NotePad />
+              <NotePad apn={props.apn} profile={props.profile}/>
             </div>
           </div>
         </div>

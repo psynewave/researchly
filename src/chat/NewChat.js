@@ -19,8 +19,12 @@ export default class NewChat extends React.Component {
     */
     let name = this.props.profile ? this.props.profile.name : 'anonymous';
     let avatar = this.props.profile ? this.props.profile.picture : '../Portal/images/alan.png';
+    let chatBase = 'ChatRoom';
+    if(this.props.apn){
+      chatBase = this.props.apn;
+    }
 
-    base.post('chats', {
+    base.post(chatBase, {
       data: this.props.chats.concat([{
         name : name,
         avatar: avatar,
