@@ -10,16 +10,32 @@ import Store from '../stores/AppStore';
 import Actions from '../actions/appActions';
 
 export default class PersonalNotefields extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state={
       notes:null
     }
     this._addNote = this.addNote.bind(this);
     this._removeNote = this.removeNote.bind(this);
   }
+
+  init() {
+    let apn = this.props.state.apn;
+    let notes = Store.Notes().slice();
+    let noteIndex = _.findLastIndex(notes, {'apn':apn});
+    if( noteIndex >= 0 ){
+      this.setState({
+        notes:notes[noteIndex].items
+      });
+    }
+  }
+
+  componentWillMount(){
+      this.init();
+  }
+
   addNote(e) {
-    let apn = $(e.target).parents('.detailView').data('apn');
+    let apn = this.props.state.apn;
     let label = $(e.target).text();
     let note = {
       label: label,
@@ -42,6 +58,7 @@ export default class PersonalNotefields extends React.Component {
     }else{
       apnNotes.items[labelIndex] = note;
     }
+
     Actions.setNotes(notes);
     this.setState({
       notes:apnNotes.items
@@ -49,7 +66,7 @@ export default class PersonalNotefields extends React.Component {
   }
 
   removeNote(e){
-    let apn = $('.detailView').data('apn');
+    let apn = this.props.state.apn;
     let notes = Store.Notes().slice();
     let noteIndex = _.findLastIndex(notes, {'apn':apn});
     let note = notes[noteIndex];
@@ -70,8 +87,6 @@ export default class PersonalNotefields extends React.Component {
     this.setState({
       notes:itemlist
     });
-
-
   }
 
   render () {
