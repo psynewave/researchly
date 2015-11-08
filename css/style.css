@@ -648,6 +648,51 @@ div#paperChat.chatoff div#grabHandles i {
     color: white;
 }
 
+div#paperChat div#noteBody {
+    height: 100%;
+    border: 0;
+    box-shadow: none;
+    margin: 0;
+    background: white;
+}
+
+div#paperChat div#noteRow {
+    height: 186px;
+    position: relative;
+}
+
+div#paperChat div#noteContainer {
+    height: 100%;
+    background: white;
+    margin: 0;
+}
+
+div#paperChat div#noteWindow {
+    height: 100%;
+}
+
+div#paperChat div#innerNoteContainer {
+    height: 100%;
+}
+
+div#paperChat div#noteInput {
+    margin-top: 0;
+}
+
+div#noteInput {
+    margin-top: 0;
+}
+
+div#paperChat div#noteHeader .messageCount {
+    right: 15px;
+    top: 15px
+}
+
+div#paperChat.fullChat div#noteRow {
+    height: 88%;
+}
+
+
 /*******************************
              Marketing Styles
 *******************************/

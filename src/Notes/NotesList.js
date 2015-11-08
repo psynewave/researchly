@@ -6,11 +6,13 @@ export default class NotesList extends React.Component{
       return <li className="list-group-item" key={index}> {note} </li>
     });
     return (
-      <div className='ui comments'>
-        <h3 className="ui dividing header">Notes ({ (notes.length || 0) })</h3>
-        <ul className="list-group">
+      <div id="noteBody" className='ui segment'>
+        <div id="noteHeader" className="ui">
+          <div className="messageCount ui purple circular label">{ (notes.length || 0) }</div>
+        </div>
+        <div id="noteWindow" className="ui">
           {notes}
-        </ul>
+        </div>
       </div>
     )
   }
