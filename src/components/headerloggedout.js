@@ -28,7 +28,7 @@ export default class Header extends React.Component {
             </div>
             <div className="row">
             <div className="center aligned column">
-              <div className="ui huge green button" onClick={props.login}>
+              <div className="ui huge green button animated fade" onClick={props.login}>
                 <div className="visible content">
                   Get Started
                   <i className="right arrow icon"></i>

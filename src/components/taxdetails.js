@@ -75,7 +75,7 @@ export default class TaxDetails extends React.Component {
               <h5 className="ui top attached label">
                 Map:
               </h5>
-              <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="260px"></iframe>
+              <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="330px"></iframe>
             </Segment>
           </Column>
           <Column styles="eight">
@@ -83,67 +83,46 @@ export default class TaxDetails extends React.Component {
               <h5 className="ui top attached label">
                 Facts:
               </h5>
-              <CrossGrid>
-              <Segments styles="horizontal">
-                <Segment>
-                  <div className="ui top transparent attached label centered">
-                    {state.building.bedrooms}
-                  </div>
-                  <p></p>
-                  <div className="ui bottom attached label centered">Beds</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.county}</div>
-                  <div className="ui bottom attached label centered">County</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{numeral(state.lotSizeSquareFeet).format('0,0')}</div>
-                  <div className="ui bottom attached label centered">Lot Sq Ft</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.building.totalRooms}</div>
-                  <div className="ui bottom attached label centered">Total Rooms</div>
-                </Segment>
-              </Segments>
-              <Segments styles="horizontal">
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.building.baths ? state.building.baths : 0}</div>
-                  <p></p>
-                  <div className="ui bottom attached label centered">Baths</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.building.yearBuilt}</div>
-                  <div className="ui bottom attached label centered">Yr Built</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.building.condition}</div>
-                  <div className="ui bottom attached label centered">Condition</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.landUseCode}</div>
-                  <div className="ui bottom attached label centered">Land Use</div>
-                </Segment>
-              </Segments>
-              <Segments styles="horizontal">
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.fips}</div>
-                  <p></p>
-                  <div className="ui bottom attached label centered">fips</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.taxYear}</div>
-                  <div className="ui bottom attached label centered">Tax Year</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.taxAmount}</div>
-                  <div className="ui bottom attached label centered">Tax</div>
-                </Segment>
-                <Segment>
-                  <div className="ui top transparent attached label centered">{state.totalValue}</div>
-                  <div className="ui bottom attached label centered">Total Value</div>
-                </Segment>
-              </Segments>
-            </CrossGrid>
+              <table className="ui fixed single striped line celled table center aligned">
+                <tbody>
+                  <tr>
+                    <td>{state.building.bedrooms ? state.building.bedrooms : 0}</td>
+                    <td>{state.county ? state.county : 'unk'}</td>
+                    <td>{numeral(state.lotSizeSquareFeet).format('0,0')}</td>
+                    <td>{state.building.condition ? state.building.condition : 'unk'}</td>
+                  </tr>
+                  <tr>
+                    <td>Beds</td>
+                    <td>County</td>
+                    <td>Lot Sq Ft</td>
+                    <td>Condition</td>
+                  </tr>
+                  <tr>
+                    <td>{state.building.totalRooms ? state.building.totalRooms : 0}</td>
+                    <td>{state.building.baths ? state.building.baths : 0}</td>
+                    <td>{state.building.yearBuilt ? state.building.yearBuilt : 'unk'}</td>
+                    <td>{state.landUseCode ? state.landUseCode : 'unk'}</td>
+                  </tr>
+                  <tr>
+                    <td>Rooms</td>
+                    <td>Baths</td>
+                    <td>Yr Built</td>
+                    <td>Land Use</td>
+                  </tr>
+                  <tr>
+                    <td>{state.fips ? state.fips : "unk"}</td>
+                    <td>{state.taxYear ? state.taxYear : "unk"}</td>
+                    <td>{state.taxAmount ? numeral(state.taxAmount).format('$0,0') : 'unk'}</td>
+                    <td>{state.totalValue ? numeral(state.totalValue).format('$0,0') : 'unk'}</td>
+                  </tr>
+                  <tr>
+                    <td>Fips</td>
+                    <td>Tax Year</td>
+                    <td>Tax Amount</td>
+                    <td>Total Value</td>
+                  </tr>
+                </tbody>
+              </table>
             </Segment>
             <Segments id="ownersTable" styles="piled">
               <h5 className="ui top attached label">

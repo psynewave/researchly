@@ -108,11 +108,6 @@ export default class App extends Component {
     } else {
       contentView = <div>
         <LoggedOutContent state={this.state} login={this.showLock}/>
-          <div className="ui menu inverted fixed">
-            <div className="item">
-              loggedout
-            </div>
-          </div>
         </div>
     }
 

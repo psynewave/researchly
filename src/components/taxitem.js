@@ -22,48 +22,34 @@ export default class TaxItem extends React.Component {
             <i className="dropdown icon"></i>
           </div>
           <div className="content">
-            <div className="ui cross-grid">
-              <div className="ui horizontal segments">
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">
-                    {state.building.bedrooms}
-                  </div>
-                  <p></p>
-                  <div className="ui bottom attached label centered">Beds</div>
-                </div>
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">{state.county}</div>
-                  <div className="ui bottom attached label centered">County</div>
-                </div>
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">{numeral(state.lotSizeSquareFeet).format('0,0')}</div>
-                  <div className="ui bottom attached label centered">Lot Sq Ft</div>
-                </div>
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">{state.building.totalRooms}</div>
-                  <div className="ui bottom attached label centered">Rooms</div>
-                </div>
-              </div>
-              <div className="ui horizontal segments">
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">{state.building.baths ? state.building.baths : 0}</div>
-                  <p></p>
-                  <div className="ui bottom attached label centered">Baths</div>
-                </div>
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">{state.building.yearBuilt}</div>
-                  <div className="ui bottom attached label centered">Yr Built</div>
-                </div>
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">{state.building.condition}</div>
-                  <div className="ui bottom attached label centered">Condition</div>
-                </div>
-                <div className="ui segment">
-                  <div className="ui top transparent attached label centered">{state.landUseCode}</div>
-                  <div className="ui bottom attached label centered">Land Use</div>
-                </div>
-              </div>
-            </div>
+            <table className="ui fixed single striped line celled table center aligned">
+              <tbody>
+                <tr>
+                  <td>{state.building.bedrooms ? state.building.bedrooms : 0}</td>
+                  <td>{state.county ? state.county : 'unk'}</td>
+                  <td>{numeral(state.lotSizeSquareFeet).format('0,0')}</td>
+                  <td>{state.building.condition ? state.building.condition : 'unk'}</td>
+                </tr>
+                <tr>
+                  <td>Beds</td>
+                  <td>County</td>
+                  <td>Lot Sq Ft</td>
+                  <td>Condition</td>
+                </tr>
+                <tr>
+                  <td>{state.building.totalRooms ? state.building.totalRooms : 0}</td>
+                  <td>{state.building.baths ? state.building.baths : 0}</td>
+                  <td>{state.building.yearBuilt ? state.building.yearBuilt : 'unk'}</td>
+                  <td>{state.landUseCode ? state.landUseCode : 'unk'}</td>
+                </tr>
+                <tr>
+                  <td>Rooms</td>
+                  <td>Baths</td>
+                  <td>Yr Built</td>
+                  <td>Land Use</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
