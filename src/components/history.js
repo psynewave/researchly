@@ -10,15 +10,17 @@ import TaxDetails from './taxdetails';
 import Grid from './grid';
 import Rebase from 're-base';
 var base = Rebase.createClass('https://researchly.firebaseio.com/');
-
+import APNCard from './apncard';
 export default class Listings extends Component {
   constructor() {
     super();
-
     this.state = {
-      items: []
+      items: [],
+      apn:null
     };
-    this.selectComp = this.selectComp.bind(this);
+    this._selectComp = this.selectComp.bind(this);
+    this._showCard = this.showCard.bind(this);
+
   }
 
   init(){
@@ -30,9 +32,17 @@ export default class Listings extends Component {
       });
   }
 
+  showCard(e){
+    let apn = $(e.target).text();
+    this.apn=apn;
+    this.setState({
+      apn:apn
+    });
+    Actions.fetchByAPN(apn);
+  }
+
   selectComp(e) {
     let apn = String($(e.target).data('apn'));
-    Actions.fetchByAPN(apn);
     let comps = Store.Comps().slice();
     let compIndex = _.indexOf(comps, apn);
 
@@ -44,16 +54,6 @@ export default class Listings extends Component {
       Actions.setComps(comps);
     }
   }
-
-  componentDidUpdate() {
-      $('.accordion').accordion({
-        selector: {
-          trigger: '.title .icon'
-        }
-      });
-      $('.popup').popup();
-  }
-
   componentWillMount(){
   }
   componentDidMount(){
@@ -75,6 +75,7 @@ export default class Listings extends Component {
   render() {
     let comps = Store.Comps();
     let history = this.state.items;
+    let apn =this.apn;
     let list = [];
     if(history){
       list = Object.keys(history).map((i) => {
@@ -85,9 +86,9 @@ export default class Listings extends Component {
           selected = true;
         }
         return (
-            <a key={uniqueKey}  className="ui label">
+            <a key={uniqueKey}  className="ui label" data-apn={apn} onClick={this._showCard}>
               {apn}
-               <i className="icon plus" data-apn={apn} onClick={this.selectComp}></i>
+               <i className="icon plus" data-apn={apn} onClick={this._selectComp}></i>
             </a>
         );
       });
@@ -96,6 +97,8 @@ export default class Listings extends Component {
     return (
           <div id="assessmentList">
             {list}
+            <APNCard apn={apn} />
+
           </div>
     );
   }
