@@ -21,7 +21,7 @@ export default class TrendsOutput extends React.Component {
         <Column id="tax-listings" styles="padded-right six">
           <Comps />
           <History/>
-          <Listings />
+          <Listings fullsize={props.fullsize} chatHidden={props.chatHidden} toggleChat={props.toggleChat} fullChat={props.fullChat}/>
         </Column>
       </Grid>
     );

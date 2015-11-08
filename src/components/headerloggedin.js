@@ -82,13 +82,13 @@ export default class Header extends React.Component {
       <header className="collapsed">
         <div>
           <div className="ui grid inverted menu no-margin-top no-border-radius">
-            <div id="smallLogo" className="three wide column">
+            <div id="smallLogo" className="one wide column">
               <h2 className="ui icon header floated left no-margin-top no-margin-left no-padding-top no-padding-bottom">
                 <i id="smallLogoIcon" className="circular line chart icon float left no-padding-top no-padding-bottom"></i>
-                <div id="smallLogoHeader" className="ui sub header no-margin-top no-margin-left">{props.appName}</div>
+                <div id="smallLogoHeader" className="hide ui sub header no-margin-top no-margin-left">{props.appName}</div>
               </h2>
             </div>
-            <div id="search-form" className="ten wide column">
+            <div id="search-form" className="twelve wide column">
               <form id="search-bar" className="ui fluid action large input" onSubmit={this._search} autoComplete="off">
                 <input autoComplete="off" ref="search" id="search" type="search" placeholder="Search" className="search-popup" data-html={popup}/>
                 <button className="ui primary button" type="Submit">

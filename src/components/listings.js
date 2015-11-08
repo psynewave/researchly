@@ -26,6 +26,7 @@ export default class Listings extends Component {
   }
 
   open(e) {
+    let props = this.props;
     let state = this.state;
     let apn = String($(e.target).parents('.taxitem').data('apn'));
 
@@ -42,6 +43,11 @@ export default class Listings extends Component {
       transaction: transaction,
       isOpened: true
     });
+
+    if(!props.chatHidden){
+      props.toggleChat();
+    }
+
   }
 
   close() {

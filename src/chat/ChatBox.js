@@ -14,8 +14,6 @@ export default class ChatBox extends React.Component {
       fullsize: false,
       chatHidden: false,
     };
-    this.fullChat = this.fullChat.bind(this);
-    this.toggleChat = this.toggleChat.bind(this);
   }
   componentWillMount(){
   /*
@@ -44,28 +42,12 @@ export default class ChatBox extends React.Component {
     // });
   }
 
-  fullChat(){
-    let state = this.state;
-    this.setState({
-      fullsize: state.fullsize ? false : true,
-      chatHidden: false
-    });
-  }
-
-  toggleChat(){
-    let state = this.state;
-    console.log('it');
-    this.setState({
-      fullsize: false,
-      chatHidden: state.chatHidden ? false : true
-    });
-  }
-
   render(){
     let state = this.state;
     let props = this.props;
+    let _state = props.state;
     return (
-      <div id="paperChat" className={ state.fullsize ? 'ui grid fullChat' : state.chatHidden ? 'chatoff' : 'ui grid'}>
+      <div id="paperChat" className={ props.fullsize ? 'ui grid fullChat' : props.chatHidden ? 'chatoff' : 'ui grid'}>
         <div id="paperControls" className="row">
           <div id="grabHandles" className="sixteen wide column">
             <div id="grabBar" className="ui horizontal segments basic aligned center no-border-radius">
@@ -73,10 +55,10 @@ export default class ChatBox extends React.Component {
                 <p></p>
               </div>
               <div id="customResizableHandle" className="ui segment basic aligned center">
-                <p><i className="ellipsis horizontal icon" onClick={this.fullChat}></i></p>
+                <p><i className="ellipsis horizontal icon" onClick={props.fullChat}></i></p>
               </div>
               <div className="ui segment basic aligned right">
-                <p><i className={ state.chatHidden ? "caret up icon" : "caret down icon"} onClick={this.toggleChat}></i></p>
+                <p><i className={ props.chatHidden ? "caret up icon" : "caret down icon"} onClick={props.toggleChat}></i></p>
               </div>
             </div>
           </div>
