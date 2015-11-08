@@ -23,8 +23,12 @@ export default class Container extends React.Component {
      * which causes our local instance (and any other instances) to update
      * state to reflect those changes.
      */
+     let chatBase = 'ChatRoom';
+     if(this.props.apn){
+       chatBase = this.props.apn;
+     }
 
-    this.ref = base.syncState('chats', {
+    this.ref = base.syncState(chatBase, {
       context: this,
       state: 'messages',
       asArray: true

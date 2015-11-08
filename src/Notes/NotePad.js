@@ -11,11 +11,20 @@ export default class NotePad extends React.Component{
     };
   }
   init(){
-    this.ref = base.syncState('ash', {
-      context: this,
-      asArray: true,
-      state: 'notes'
-    })
+    if(this.props.profile){
+      let noteBase = this.props.profile.name;
+      if(this.props.apn){
+        noteBase = this.props.apn;
+      }
+      console.log(noteBase);
+      if(noteBase){
+        this.ref = base.syncState(noteBase, {
+          context: this,
+          asArray: true,
+          state: 'notes'
+        });
+      }
+    }
   }
 
   componentWillMount(){
@@ -24,10 +33,14 @@ export default class NotePad extends React.Component{
     this.init();
   }
   componentWillUnmount(){
-    base.removeBinding(this.ref);
+    if(this.ref){
+      base.removeBinding(this.ref);
+    }
   }
   componentWillReceiveProps(){
-    base.removeBinding(this.ref);
+    if(this.ref){
+      base.removeBinding(this.ref);
+    }
     this.init();
   }
   handleAddNote(newNote){
@@ -37,11 +50,8 @@ export default class NotePad extends React.Component{
   }
   render(){
     let props = this.props;
-    console.log(this.props);
-
     return (
           <Notes
-            profile={props.profile}
             notes={this.state.notes}
             addNote={this.handleAddNote.bind(this)} />
     )
