@@ -735,6 +735,28 @@ div#fullChat {
     overflow: hidden;
 }
 
+/****
+Listing cards
+****/
+
+.ui.segment.left.pointing.label {}
+
+.listing.card {
+    width: 100%;
+}
+
+.listing.card .image {
+    width: 100%;
+}
+
+div#chatWindow .label {
+    width: 100%;
+}
+
+div#chatWindow .label .close {
+    float: right;
+}
+
 /**
 History
 **/
