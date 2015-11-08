@@ -6,8 +6,6 @@ import Container from './container';
 import Segment from './segment';
 import Listings from './listings';
 import Trends from './trends';
-import Comps from './comps';
-import History from './history';
 export default class TrendsOutput extends React.Component {
   render () {
 
@@ -19,8 +17,6 @@ export default class TrendsOutput extends React.Component {
           <Trends />
         </Column>
         <Column id="tax-listings" styles="padded-right six">
-          <Comps />
-          <History/>
           <Listings fullsize={props.fullsize} chatHidden={props.chatHidden} toggleChat={props.toggleChat} fullChat={props.fullChat}/>
         </Column>
       </Grid>

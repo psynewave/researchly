@@ -34,11 +34,13 @@ export default class Listings extends Component {
 
   showCard(e){
     let apn = $(e.target).text();
+    let props = this.props;
     this.apn=apn;
     this.setState({
       apn:apn
     });
     Actions.fetchByAPN(apn);
+    props.historyOpen();
   }
 
   selectComp(e) {
@@ -74,6 +76,7 @@ export default class Listings extends Component {
 
   render() {
     let comps = Store.Comps();
+    let props = this.props;
     let history = this.state.items;
     let apn =this.apn;
     let list = [];
@@ -86,19 +89,17 @@ export default class Listings extends Component {
           selected = true;
         }
         return (
-            <a key={uniqueKey}  className="ui label" data-apn={apn} onClick={this._showCard}>
-              {apn}
-               <i className="icon plus" data-apn={apn} onClick={this._selectComp}></i>
-            </a>
+            <div className="history item" key={uniqueKey} data-apn={apn} onClick={this._showCard}>
+              <i className="icon plus historyAddComp" data-apn={apn} onClick={this._selectComp}></i> <div className="historyLabel">{apn}</div>
+            </div>
         );
       });
     }
 
     return (
-          <div id="assessmentList">
+          <div id="historyPortal">
             {list}
-            <APNCard apn={apn} />
-
+            <APNCard click={props.click} apn={apn} />
           </div>
     );
   }
