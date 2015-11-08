@@ -18,10 +18,12 @@ export default class NewChat extends React.Component {
      * to return a mutated copy of your state)
     */
     let name = this.props.profile ? this.props.profile.name : 'anonymous';
+    let avatar = this.props.profile ? this.props.profile.picture : '../Portal/images/alan.png';
 
     base.post('chats', {
       data: this.props.chats.concat([{
         name : name,
+        avatar: avatar,
         title: this.refs.title.value
       }]),
       context: this,
