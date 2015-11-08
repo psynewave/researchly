@@ -66,13 +66,13 @@ export default class ChatBox extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="eight wide column">
+          <div id="chatRow" className="eight wide column chat">
             <div className="ui segment">
               <NewChat profile={props.profile} chats={ this.state.messages } />
               <Container />
             </div>
           </div>
-          <div className="eight wide column">
+          <div id="noteRow" className="eight wide column chat">
             <div className="ui segment">
               <NotePad />
             </div>

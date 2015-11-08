@@ -470,6 +470,14 @@ div#grabHandles .segments {
     padding: 0;
 }
 
+.bg-info {
+    margin-bottom: 10px;
+}
+
+.bg-info .ui.segment.label {
+    max-width: 89%;
+}
+
 
 /*******************************
              Marketing Styles
