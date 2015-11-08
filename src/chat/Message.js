@@ -4,7 +4,11 @@ export default class Message extends React.Component {
     let props = this.props;
     return (
       <div className='comment' onClick={ props.handleClick.bind(null) } className={ props.show ? 'bg-warning' : 'bg-info'}>
-            <i onClick={ props.removeMessage.bind(null) } className="close icon"></i> { props.thread.title }
+              {props.thread.name}
+              <div className="ui segment left pointing label">
+                { props.thread.title }
+                <i onClick={ props.removeMessage.bind(null) } className="close icon"></i>
+             </div>
       </div>
     );
   }

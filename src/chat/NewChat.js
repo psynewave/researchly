@@ -17,9 +17,11 @@ export default class NewChat extends React.Component {
      * the data in your Firebase (ie, use concat
      * to return a mutated copy of your state)
     */
+    let name = this.props.profile ? this.props.profile.name : 'anonymous';
 
     base.post('chats', {
       data: this.props.chats.concat([{
+        name : name,
         title: this.refs.title.value
       }]),
       context: this,

@@ -47,7 +47,7 @@ export default class ChatBox extends React.Component {
 
   render(){
     let state = this.state;
-
+    let props = this.props;
     return (
       <div id="paperChat" className={ state.fullsize ? 'ui grid fullChat' : 'ui grid'}>
         <div className="row">
@@ -68,7 +68,7 @@ export default class ChatBox extends React.Component {
         <div className="row">
           <div className="eight wide column">
             <div className="ui segment">
-              <NewChat chats={ this.state.messages } />
+              <NewChat profile={props.profile} chats={ this.state.messages } />
               <Container />
             </div>
           </div>
