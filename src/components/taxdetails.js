@@ -7,7 +7,7 @@ import Segment from './segment';
 import Segments from './segments';
 import CrossGrid from './crossgrid';
 import 'imports?$=jquery,jQuery=jquery!../../css/semantic/semantic.min.js';
-
+import ChatBox from '../chat/chatbox'
 export default class TaxDetails extends React.Component {
   constructor() {
     super();
@@ -34,6 +34,8 @@ export default class TaxDetails extends React.Component {
     }
     return (
       <div id={props.id} className={classNames(props.styles, "detailView")} data-apn={state.apn}>
+        <ChatBox apn={state.apn} profile={props.profile}></ChatBox>
+
         <Grid styles="ui stackable">
         <Column styles="sixteen">
 
