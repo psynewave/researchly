@@ -22,7 +22,7 @@ export default class ChatBox extends React.Component {
    */
    let chatBase = 'ChatRoom';
    if(this.props.apn){
-     chatBase = this.props.apn;
+     chatBase = this.props.apn + '/comments';
    }
    base.bindToState(chatBase, {
       context: this,
