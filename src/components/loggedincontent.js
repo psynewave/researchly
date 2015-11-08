@@ -4,7 +4,7 @@ import Footer from './footer';
 import MarketCopy from './marketcopy';
 import Header from './headerloggedin';
 import TrendsOutput from './trendsoutput.js';
-import ChatBox from '../chat/ChatBox';
+import ChatBox from '../chat/chatbox';
 
 export default class LoggedInContent extends React.Component {
 

@@ -8,7 +8,7 @@ import Constants from './constants/consts';
 import Store from './stores/AppStore';
 import AppBody from './components/appBody';
 import MarketCopy from './components/marketcopy';
-import ChatBox from './chat/ChatBox';
+import ChatBox from './chat/chatbox';
 import NotePad from './notes/NotePad';
 import LoggedOutContent from './components/loggedoutcontent';
 import LoggedInContent from './components/loggedincontent';
