@@ -51,6 +51,7 @@ export default class Listings extends Component {
   }
 
   close() {
+    Actions.rebindPaper(null);    
     this.setState({
       isOpened: false
     });
