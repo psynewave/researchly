@@ -9,7 +9,7 @@ export default class Message extends React.Component {
           $.getJSON( mlsUrl )
             .done(function( json ) {
               $(tag).html(`
-                <div class="listing ui card">
+                <div class="listing ui card full">
                   <div class="image">
                     <img src="${json.bundle.media[0].url}">
                   </div>
@@ -26,7 +26,25 @@ export default class Message extends React.Component {
                     <span>
                       Baths - ${json.bundle.baths}
                     </span>
-                </div>`);
+                </div>
+              </div>
+              <div class="ui items listing tiny">
+                <div class="item">
+                  <div class="ui small image">
+                    <img src="${json.bundle.media[0].url}">
+                  </div>
+                  <div class="content">
+                    <div class="header">${json.bundle.address}</div>
+                    <div class="meta">
+                      <span class="price">${numeral(json.bundle.price).format('$0,0')}</span>
+                      <span class="stay">${json.bundle.bedrooms} bds ${json.bundle.baths} bths</span>
+                    </div>
+                    <div class="description">
+                    
+                    </div>
+                  </div>
+                </div>
+                `);
             })
             .fail(function( jqxhr, textStatus, error ) {
               var err = textStatus + ", " + error;

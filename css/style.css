@@ -739,8 +739,6 @@ div#fullChat {
 Listing cards
 ****/
 
-.ui.segment.left.pointing.label {}
-
 .listing.card {
     width: 100%;
 }
@@ -750,11 +748,24 @@ Listing cards
 }
 
 div#chatWindow .label {
-    width: 100%;
+    /* width: 100%; */
 }
 
 div#chatWindow .label .close {
     float: right;
+}
+
+div#paperChat.fullChat .ui.items.listing.tiny {
+    display: none;
+}
+
+.listing.ui.card.full {
+    display: none;
+}
+
+div#paperChat.fullChat .listing.ui.card.full {
+    display: block;
+    width: 95%;
 }
 
 /**
