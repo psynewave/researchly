@@ -709,6 +709,7 @@ div#noteInput {
 div#chatWindow {
   height: 183px;
   overflow: scroll;
+  padding-bottom: 40px;
 }
 
 span#paperLabel {
@@ -749,6 +750,26 @@ Listing cards
 
 div#chatWindow .label {
     /* width: 100%; */
+    width: 90%;
+}
+
+div#chatWindow .trends.ui {
+    width: 95%;
+}
+
+.trendIcon {
+  position: absolute;
+}
+
+h5.trendLabel.header {
+    position: relative;
+    top: -22px;
+    left: 35px;
+}
+
+.trends.ui .secondary {
+    padding-bottom: 0;
+    height: 48px;
 }
 
 div#chatWindow .label .close {
