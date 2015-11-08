@@ -170,7 +170,7 @@ export default class Listings extends Component {
             {assessmentList}
           </div>
         </div>
-        <Modal style='standard' size='fullscreen' isOpened={state.isOpened} closeIcon closeOnOutsideClick onClose={this.close}>
+        <Modal style='standard' size='fullscreen' isOpened={state.isOpened} closeIcon onClose={this.close}>
           <div className='header'>
            {state.taxDetailAddress}
           </div>

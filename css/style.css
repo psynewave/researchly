@@ -531,6 +531,7 @@ div#paperChat {
     overflow: hidden;
     margin: 0;
     border-top: 1px solid #ddd;
+    z-index: 9999;
 }
 
 div#paperChat.fullChat {

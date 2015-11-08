@@ -6,6 +6,8 @@ import Segment from './segment';
 import Segments from './segments';
 import CrossGrid from './crossgrid';
 import Actions from '../actions/appActions';
+import PersonalNotepad from './personalnotepad';
+
 export default class SideBySide extends React.Component {
   constructor(props) {
     super(props);
@@ -131,7 +133,7 @@ export default class SideBySide extends React.Component {
           </Column>
         </Grid>
         <Column styles="sixteen">
-          <p>Notes will go here</p>
+          <PersonalNotepad state={state} />
         </Column>
     </div>
     );

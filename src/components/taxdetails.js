@@ -151,7 +151,6 @@ export default class TaxDetails extends React.Component {
     <Grid>
       <Row>
       <Column id="detailChatHolder" styles="sixteen">
-          <ChatBox apn={state.apn} profile={props.profile}></ChatBox>
       </Column>
       </Row>
     </Grid>

@@ -76,7 +76,7 @@ export default class ChatBox extends React.Component {
                 <p><i className="ellipsis horizontal icon" onClick={this.fullChat}></i></p>
               </div>
               <div className="ui segment basic aligned right">
-                <p><i className={ state.fullsize ? 'ui grid fullChat' : state.chatHidden ? "caret up icon" : "caret down icon"} onClick={this.toggleChat}></i></p>
+                <p><i className={ state.chatHidden ? "caret up icon" : "caret down icon"} onClick={this.toggleChat}></i></p>
               </div>
             </div>
           </div>
