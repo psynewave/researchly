@@ -26,6 +26,7 @@ export default class Listings extends Component {
   }
 
   open(e) {
+    let props = this.props;
     let state = this.state;
     let apn = String($(e.target).parents('.taxitem').data('apn'));
 
@@ -33,7 +34,7 @@ export default class Listings extends Component {
     let assessment = _.where(state.assessments, {'apn': apn})[0];
     let taxDetailAddress = $(e.target).parents('.taxitem').data('header');
     let transaction = _.where(state.transactions, {'apn': apn})[0];
-
+    Actions.rebindPaper(apn);
     this.setState({
       apn: apn,
       parcel: parcel,
@@ -42,6 +43,11 @@ export default class Listings extends Component {
       transaction: transaction,
       isOpened: true
     });
+
+    if(!props.chatHidden){
+      props.toggleChat();
+    }
+
   }
 
   close() {

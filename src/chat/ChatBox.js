@@ -1,50 +1,20 @@
 import React from 'react';
 import Container from './chatcontainer';
-import NewChat from './NewChat';
 import NotePad from '../notes/NotePad';
 import Rebase from 're-base';
 import Store from '../stores/AppStore';
 import Constants from '../constants/consts.js';
-var base = Rebase.createClass('https://researchly.firebaseio.com/');
-
 export default class ChatBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      messages: [],
       fullsize: false,
       chatHidden: false,
     };
-    this.fullChat = this.fullChat.bind(this);
-    this.toggleChat = this.toggleChat.bind(this);
-    this._init = this.init.bind(this);
   }
-
-  init(){
-    if(this.ref){
-       base.removeBinding(this.ref);
-    }
-    let chatBase = 'ChatRoom';
-    let apn = Store.APN();
-    if(apn){
-      chatBase = 'history/' + apn + '/comments';
-    }
-    this.ref = base.bindToState(chatBase, {
-       context: this,
-       state: 'messages',
-       asArray: true
-     });
-  }
-
   componentWillMount(){
-      //this.init();
-      Store.addChangeListener(Constants.APN_CHANGED, this._init);
   }
   componentWillUnmount(){
-    Store.removeChangeListener(Constants.APN_CHANGED, this._init);
-    if(this.ref){
-      base.removeBinding(this.ref);
-    }
   }
 
   componentDidMount(){
@@ -57,28 +27,12 @@ export default class ChatBox extends React.Component {
     // });
   }
 
-  fullChat(){
-    let state = this.state;
-    this.setState({
-      fullsize: state.fullsize ? false : true,
-      chatHidden: false
-    });
-  }
-
-  toggleChat(){
-    let state = this.state;
-    console.log('it');
-    this.setState({
-      fullsize: false,
-      chatHidden: state.chatHidden ? false : true
-    });
-  }
-
   render(){
     let state = this.state;
     let props = this.props;
+    let _state = props.state;
     return (
-      <div id="paperChat" className={ state.fullsize ? 'ui grid fullChat' : state.chatHidden ? 'chatoff' : 'ui grid'}>
+      <div id="paperChat" className={ props.fullsize ? 'ui grid fullChat' : props.chatHidden ? 'chatoff' : 'ui grid'}>
         <div id="paperControls" className="row">
           <div id="grabHandles" className="sixteen wide column">
             <div id="grabBar" className="ui horizontal segments basic aligned center no-border-radius">
@@ -86,10 +40,10 @@ export default class ChatBox extends React.Component {
                 <p></p>
               </div>
               <div id="customResizableHandle" className="ui segment basic aligned center">
-                <p><i className="ellipsis horizontal icon" onClick={this.fullChat}></i></p>
+                <p><i className="ellipsis horizontal icon" onClick={props.fullChat}></i></p>
               </div>
               <div className="ui segment basic aligned right">
-                <p><i className={ state.chatHidden ? "caret up icon" : "caret down icon"} onClick={this.toggleChat}></i></p>
+                <p><i className={ props.chatHidden ? "caret up icon" : "caret down icon"} onClick={props.toggleChat}></i></p>
               </div>
             </div>
           </div>
@@ -98,17 +52,14 @@ export default class ChatBox extends React.Component {
           <div id="chatRow" className="eight wide column chat">
             <div id="chatContainer" className="ui segments">
               <div id="innerChatContainer" className="ui segment">
-                <Container apn={props.apn} />
-              </div>
-              <div className="ui segment">
-                <NewChat apn={props.apn} profile={props.profile} chats={ this.state.messages } />
+                <Container profile={props.profile} />
               </div>
             </div>
           </div>
           <div id="noteRow" className="eight wide column chat">
             <div id="noteContainer" className="ui segments">
               <div id="innerNoteContainer" className="">
-                <NotePad apn={props.apn} profile={props.profile}/>
+                <NotePad profile={props.profile}/>
               </div>
             </div>
           </div>
