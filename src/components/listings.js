@@ -8,12 +8,14 @@ import Modal from './modal';
 import TaxItem from './taxitem';
 import TaxDetails from './taxdetails';
 import Grid from './grid';
+import History from './history';
 export default class Listings extends Component {
   constructor() {
     super();
     this.state = {
       isOpened: false,
-      comps:Store.Comps()
+      comps:Store.Comps(),
+      historyOpen: false
     };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
@@ -23,6 +25,8 @@ export default class Listings extends Component {
     this._setParcels = this.setParcels.bind(this);
     this._setAssessments = this.setAssessments.bind(this);
     this._setTransactions = this.setTransactions.bind(this);
+    this.historyOpen = this.historyOpen.bind(this);
+    this.historyClosed = this.historyClosed.bind(this);
   }
 
   open(e) {
@@ -31,9 +35,11 @@ export default class Listings extends Component {
     let apn = String($(e.target).parents('.taxitem').data('apn'));
 
     let parcel = _.where(state.parcels, {'apn': apn})[0];
-    let assessment = _.where(state.assessments, {'apn': apn})[0];
+    let assessment = Store.Assessment(apn);
     let taxDetailAddress = $(e.target).parents('.taxitem').data('header');
     let transaction = _.where(state.transactions, {'apn': apn})[0];
+
+    console.log(assessment);
 
     Actions.rebindPaper(apn);
     this.setState({
@@ -52,7 +58,7 @@ export default class Listings extends Component {
   }
 
   close() {
-    Actions.rebindPaper(null);    
+    Actions.rebindPaper(null);
     this.setState({
       isOpened: false
     });
@@ -97,6 +103,19 @@ export default class Listings extends Component {
     Actions.setComps(comps);
   }
 
+  historyOpen(){
+    this.setState({
+      historyOpen: true
+    });
+  }
+
+  historyClosed(){
+    console.log('close');
+    this.setState({
+      historyOpen: false
+    });
+  }
+
   setParcels(){
     this.setState({
       parcels: Store.Parcels()
@@ -133,6 +152,9 @@ export default class Listings extends Component {
         }
       });
       $('.popup').popup();
+      $('.dropdown').dropdown({
+        transition: 'drop'
+      });
   }
 
   render() {
@@ -170,6 +192,19 @@ export default class Listings extends Component {
     return (
     <div>
         <div>
+          <div id="historyList" className={state.historyOpen ? "historyOpen" : ""}>
+            <div id="historyOuterContainer" className="ui text menu">
+              <div id="historyInnerContainer" className="ui right dropdown item">
+                <div id="historyMenuLabel">History</div>
+                <i className="dropdown icon floated right"></i>
+                <div id="historyMenu" className="menu">
+                  <i id="dismissHistory" className="close icon" onClick={this.historyClosed}></i>
+                  <History historyOpen={this.historyOpen} click={this.open} />
+                </div>
+              </div>
+            </div>
+
+          </div>
           <div id="assessmentErrors">
             {errorMessage}
           </div>

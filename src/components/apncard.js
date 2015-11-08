@@ -29,13 +29,14 @@ export default class TaxItem extends React.Component {
 
   render () {
     let state = this.state.assessment;
+    let props = this.props;
     if(!state){
       return (<div></div>);
     }
     return (
-      <div className="ui segment basic taxitem no-padding-left" data-header={state.address.full} data-apn={state.apn}>
+      <div id="historyCard" className="ui segment basic taxitem no-padding-left" data-header={state.address.full} data-apn={state.apn}>
         <div className="ui fluid">
-          <h4 className="ui header">
+          <h4 className="ui header" onClick={props.click}>
             {state.address.full}, {state.address.state} {state.address.zip}
           </h4>
           <div className="content">

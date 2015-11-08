@@ -739,6 +739,57 @@ div#fullChat {
     overflow: hidden;
 }
 
+/**
+History
+**/
+
+div#historyCard {
+  display: none;
+}
+
+div#historyList {
+    width: 100%;
+}
+
+div#historyOuterContainer {
+    width: 100%;
+}
+
+div#historyInnerContainer {
+    width: 100%;
+    padding: 20px;
+}
+
+div#historyMenuLabel {
+    width: 100%;
+    text-align: right;
+}
+
+i#dismissHistory {
+    position: absolute;
+    right: -2px;
+    top: 3px;
+    color: #ccc;
+    visibility: hidden;
+}
+
+div#historyPortal {
+  padding: 20px;
+}
+
+div#historyList.historyOpen div#historyInnerContainer div#historyMenu {
+    display: block!important;
+    visibility: visible!important;
+}
+
+div#historyList.historyOpen div#historyCard {
+  display: block;
+}
+
+div#historyList.historyOpen i#dismissHistory {
+  visibility: visible;
+}
+
 
 /*******************************
              Marketing Styles
