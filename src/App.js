@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
-import 'imports?$=jquery,jQuery=jquery!../css/jquery-ui/jquery-ui.js';
-
 import '../css/style.css';
 import React, { Component } from 'react';
 import Actions from './actions/appActions';
