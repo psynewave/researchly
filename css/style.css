@@ -383,6 +383,16 @@ i.square.icon.left.compare {
 
 .ui.segment.taxitem {
     border-bottom: 1px solid #efefef;
+    padding: 0;
+}
+
+.ui.segment.taxitem .sub.header {
+    margin: 5px 20px;
+    color: lightslategray;
+}
+
+#assessmentList {
+  margin-top: 12px;
 }
 
 #compList {

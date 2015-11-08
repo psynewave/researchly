@@ -162,8 +162,13 @@ export default class Listings extends Component {
     return (
     <div>
         <div>
-          {errorMessage}
-          {assessmentList}
+          <div id="assessmentErrors">
+            {errorMessage}
+          </div>
+
+          <div id="assessmentList">
+            {assessmentList}
+          </div>
         </div>
         <Modal style='standard' size='fullscreen' isOpened={state.isOpened} closeIcon closeOnOutsideClick onClose={this.close}>
           <div className='header'>
