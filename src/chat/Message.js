@@ -4,8 +4,8 @@ export default class Message extends React.Component {
   render(){
     let props = this.props;
     var p = new Parser();
-    p.addRule(/\#[\S]+/ig, function(tag) {
-        let mlsUrl = `https://rets.io/api/v1/armls/listings/${tag.split('#')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
+    p.addRule(/\#mls[\S]+/ig, function(tag) {
+        let mlsUrl = `https://rets.io/api/v1/armls/listings/${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
           $.getJSON( mlsUrl )
             .done(function( json ) {
               $(tag).html(`
@@ -40,7 +40,7 @@ export default class Message extends React.Component {
                       <span class="stay">${json.bundle.bedrooms} bds ${json.bundle.baths} bths</span>
                     </div>
                     <div class="description">
-                    
+
                     </div>
                   </div>
                 </div>
@@ -52,6 +52,45 @@ export default class Message extends React.Component {
           });
         return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
     });
+
+    p.addRule(/\#apn[\S]+/ig, function(tag) {
+        let apnUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&apn=${tag.split('#apn')[1]}`;
+          $.getJSON( apnUrl )
+            .done(function( json ) {
+              $(tag).html(`
+                <div class="listing ui card full">
+                  ${json.bundle[0].county}
+                  ${json.bundle[0].landUseDescription}
+                </div>
+                `);
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+              var err = textStatus + ", " + error;
+              console.log( "Request Failed: " + err );
+          });
+        return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
+    });
+
+    p.addRule(/\#trends[\S]+/ig, function(tag) {
+        let trendsUrl = `https://mlspro.staging.mlslistings.com/odata/Growth/MarketTrends?$filter=Class%20eq%20%27Residential%20-%20Single%20Family%27%20and%20PeriodType%20eq%20%27Year%27%20and%20GeographyType%20eq%20%27Zip%27%20and%20GeographyName%20eq%20%27${tag.split('#trends')[1]}%27`;
+          $.getJSON( trendsUrl )
+            .done(function( json ) {
+              $(tag).html(`
+                <div class="listing ui card full">
+                  PendingCount:${json.value[0].PendingCount}<br/>
+                  ActiveAvgDOM:${json.value[0].ActiveAvgDOM}<br/>
+                  ActiveAvgDOM:${json.value[0].ActiveAvgDOM}<br/>
+                </div>
+                `);
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+              var err = textStatus + ", " + error;
+              console.log( "Request Failed: " + err );
+          });
+        return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
+    });
+
+
     let message =  p.parse(props.thread.title);
 
     return (
