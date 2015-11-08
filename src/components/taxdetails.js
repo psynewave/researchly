@@ -11,18 +11,26 @@ import ChatBox from '../chat/chatbox';
 import PersonalNotepad from './personalnotepad';
 
 export default class TaxDetails extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
+
+  componentWillMount(){
+    let props = this.props;
+    let state = props.state;
+    let transactionUrl = `https://rets.io/api/v1/pub/transactions?access_token=43224a475a157d1286c4b16dc75d5a7c&id=${state.id}`
+    console.log(state);
+    $.getJSON( transactionUrl, function( data ) {
+      console.log(data);
+    });
+  }
+
   render () {
     let owners;
     let props = this.props;
     let state = props.state;
     let long = state.coordinates[0];
     let lat = state.coordinates[1];
-
-    debugger;
-
     let embedImageKey = 'AIzaSyAC5JPC1hQbZ9s4TrI7rYGBr7j6DqD6E9M';
     let embedMapKey = 'AIzaSyBqu09KlXrABRt8gQcxaPiMExeLJ0Gme9A';
     let mapImageUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${lat},${long}&markers=color:blue%7C${lat},${long}&zoom=14&size=300x200&key=${embedImageKey}`
@@ -47,15 +55,15 @@ export default class TaxDetails extends React.Component {
 
         <Grid styles="ui stackable">
           <Column styles="eight">
-            <Segment>
+            <Segment id="detailMap">
               <h5 className="ui top attached label">
                 Map:
               </h5>
-              <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="230px"></iframe>
+              <iframe className="liveMapFrame" scrolling="no" frameBorder="0" src={liveMapUrl} width="100%" height="260px"></iframe>
             </Segment>
           </Column>
           <Column styles="eight">
-            <Segment>
+            <Segment id="factsTable">
               <h5 className="ui top attached label">
                 Facts:
               </h5>
@@ -100,9 +108,28 @@ export default class TaxDetails extends React.Component {
                   <div className="ui bottom attached label centered">Land Use</div>
                 </Segment>
               </Segments>
+              <Segments styles="horizontal">
+                <Segment>
+                  <div className="ui top transparent attached label centered">{state.fips}</div>
+                  <p></p>
+                  <div className="ui bottom attached label centered">fips</div>
+                </Segment>
+                <Segment>
+                  <div className="ui top transparent attached label centered">{state.taxYear}</div>
+                  <div className="ui bottom attached label centered">Tax Year</div>
+                </Segment>
+                <Segment>
+                  <div className="ui top transparent attached label centered">{state.taxAmount}</div>
+                  <div className="ui bottom attached label centered">Tax</div>
+                </Segment>
+                <Segment>
+                  <div className="ui top transparent attached label centered">{state.totalValue}</div>
+                  <div className="ui bottom attached label centered">Total Value</div>
+                </Segment>
+              </Segments>
             </CrossGrid>
             </Segment>
-            <Segments styles="piled">
+            <Segments id="ownersTable" styles="piled">
               <h5 className="ui top attached label">
                 Owners:
               </h5>
