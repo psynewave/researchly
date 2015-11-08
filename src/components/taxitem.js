@@ -15,6 +15,9 @@ export default class TaxItem extends React.Component {
           <h4 className="ui header" onClick={props.click}>
             {state.address.full}, {state.address.state} {state.address.zip}
           </h4>
+          <h5 className="ui sub header">
+            {state.apn}
+          </h5>
           <div className="title left">
             <i className="dropdown icon"></i>
           </div>
