@@ -15,11 +15,19 @@ export default class Trends extends React.Component {
   }
 
   drillDown(e){
-
+    var level = this.refs.drillLevel.value;
+    Actions.setLevel(level);
+    this.setState({
+      level: level
+    });
   }
 
   drillButton(e){
-
+    var level = $(e.target).data('level');
+    Actions.setLevel(level);
+    this.setState({
+      level: level
+    });
   }
 
   componentWillMount() {
