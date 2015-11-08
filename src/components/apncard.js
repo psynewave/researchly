@@ -36,8 +36,10 @@ export default class TaxItem extends React.Component {
     return (
       <div id="historyCard" className="ui segment basic taxitem no-padding-left" data-header={state.address.full} data-apn={state.apn}>
         <div className="ui fluid">
+          <i className="icon plus historyAddComp floated right" data-apn={state.apn} onClick={props.selectComp}></i>
           <h4 className="ui header" onClick={props.click}>
             {state.address.full}, {state.address.state} {state.address.zip}
+
           </h4>
           <div className="content">
             <div className="ui cross-grid">

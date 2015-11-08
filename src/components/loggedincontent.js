@@ -44,7 +44,7 @@ export default class LoggedInContent extends React.Component {
 
     return (
       <AppBody id={ state.fullsize ? 'fullChat' : ''}>
-        <Header profile={props.profile} login={props.login}/>
+        <Header default="true" profile={props.profile} login={props.login}/>
         <TrendsOutput fullsize={state.fullsize} chatHidden={state.chatHidden} toggleChat={this.toggleChat} fullChat={this.fullChat} />
         <ChatBox fullsize={state.fullsize} chatHidden={state.chatHidden} toggleChat={this.toggleChat} fullChat={this.fullChat} profile={props.profile}></ChatBox>
       </AppBody>

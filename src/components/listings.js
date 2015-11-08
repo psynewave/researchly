@@ -210,11 +210,12 @@ export default class Listings extends Component {
             {errorMessage}
           </div>
 
+          <Comps />
+
           <div id="assessmentList">
             {assessmentList}
           </div>
 
-          <Comps />
         </div>
         <Modal style='standard' size='fullscreen' isOpened={state.isOpened} closeIcon onClose={this.close}>
           <div className='header'>

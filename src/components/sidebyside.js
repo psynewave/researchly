@@ -7,6 +7,7 @@ import Segments from './segments';
 import CrossGrid from './crossgrid';
 import Actions from '../actions/appActions';
 import PersonalNotepad from './personalnotepad';
+import Chart from './chart';
 
 export default class SideBySide extends React.Component {
   constructor(props) {
@@ -107,7 +108,7 @@ export default class SideBySide extends React.Component {
               Median Sale Price in {geo.Zip} {geo.City} {geo.County}
             </h5>
             <Segment styles="attached">
-                <p>Chart will go here</p>
+              <Chart group={props.id} zip={geo.Zip} city={geo.City} county={geo.County} label="Period" column="MedSalePrice" drillDown="3"></Chart>
             </Segment>
             </Segments>
           </Column>
@@ -117,7 +118,7 @@ export default class SideBySide extends React.Component {
               Median Days On Market in {geo.Zip} {geo.City} {geo.County}
             </h5>
             <Segment styles="attached">
-              <p>Chart will go here</p>
+              <Chart group={props.id} zip={geo.Zip} city={geo.City} county={geo.County} label="Period" column="SoldMedDOM" drillDown="3"></Chart>
             </Segment>
             </Segments>
           </Column>
@@ -127,7 +128,7 @@ export default class SideBySide extends React.Component {
               Median SalePrice/Sqft in {geo.Zip} {geo.City} {geo.County}
             </h5>
             <Segment styles="attached">
-                <p>Chart will go here</p>
+              <Chart group={props.id} zip={geo.Zip} city={geo.City} county={geo.County} label="Period" column="MedSalePricePerSqft" drillDown="3"></Chart>
             </Segment>
             </Segments>
           </Column>

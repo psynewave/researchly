@@ -668,7 +668,7 @@ div#paperChat.chatoff {
 }
 
 div#paperChat.chatoff div#grabHandles {
-    background: #121212;
+    background: orange;
 }
 
 div#paperChat.chatoff div#grabHandles i {
@@ -747,6 +747,10 @@ div#historyCard {
   display: none;
 }
 
+div#historyCard .header {
+  padding-bottom: 10px;
+}
+
 div#historyList {
     width: 100%;
     height: 33px;
@@ -764,7 +768,6 @@ div#historyOuterContainer {
 
 div#historyInnerContainer {
     width: 100%;
-    padding: 20px;
 }
 
 div#historyMenuLabel {

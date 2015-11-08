@@ -7,7 +7,7 @@ import Segment from './segment';
 import Segments from './segments';
 import CrossGrid from './crossgrid';
 import 'imports?$=jquery,jQuery=jquery!../../css/semantic/semantic.min.js';
-import ChatBox from '../chat/chatbox';
+import Chart from './chart';
 import PersonalNotepad from './personalnotepad';
 
 export default class TaxDetails extends React.Component {
@@ -160,7 +160,7 @@ export default class TaxDetails extends React.Component {
               Median Sale Price:
             </h5>
             <Segment styles="attached">
-              chart will go here
+              <Chart label="Period" column="MedSalePrice" drillDown="3"></Chart>
             </Segment>
             </Segments>
           </Column>
@@ -170,7 +170,7 @@ export default class TaxDetails extends React.Component {
               Median Days On Market:
             </h5>
             <Segment styles="attached">
-              chart will go here
+              <Chart label="Period" column="SoldMedDOM" drillDown="3"></Chart>
             </Segment>
             </Segments>
           </Column>

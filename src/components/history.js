@@ -90,7 +90,7 @@ export default class Listings extends Component {
         }
         return (
             <div className="history item" key={uniqueKey} data-apn={apn} onClick={this._showCard}>
-              <i className="icon plus historyAddComp" data-apn={apn} onClick={this._selectComp}></i> <div className="historyLabel">{apn}</div>
+             <div className="historyLabel"><i className="icon eye open"></i> {apn}</div>
             </div>
         );
       });
@@ -99,7 +99,7 @@ export default class Listings extends Component {
     return (
           <div id="historyPortal">
             {list}
-            <APNCard click={props.click} apn={apn} />
+            <APNCard click={props.click} apn={apn} selectComp={this._selectComp}/>
           </div>
     );
   }
