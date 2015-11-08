@@ -672,11 +672,12 @@ div#paperChat.chatoff div#grabHandles i {
 }
 
 div#paperChat div#noteBody {
-    height: 100%;
-    border: 0;
-    box-shadow: none;
-    margin: 0;
-    background: white;
+  height: 100%;
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+  background: white;
+  padding-top: 40px;
 }
 
 div#paperChat div#noteRow {
@@ -789,6 +790,7 @@ h5.trendLabel.header {
 .trends.ui .secondary {
     padding-bottom: 0;
     height: 48px;
+    background-color: #fafafa!important;
 }
 
 div#chatWindow .label .close {
