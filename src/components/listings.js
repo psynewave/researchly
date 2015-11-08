@@ -34,7 +34,15 @@ export default class Listings extends Component {
     let assessment = _.where(state.assessments, {'apn': apn})[0];
     let taxDetailAddress = $(e.target).parents('.taxitem').data('header');
     let transaction = _.where(state.transactions, {'apn': apn})[0];
+<<<<<<< HEAD
     Actions.rebindPaper(apn);
+=======
+
+    console.log(`parcels ${apn}`, state.parcels);
+    console.log('assessment', assessment);
+    console.log('transaction', transaction);
+
+>>>>>>> ed69cc137829a8173480c5180b404cc8df5551eb
     this.setState({
       apn: apn,
       parcel: parcel,

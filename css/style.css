@@ -435,6 +435,14 @@ div#app .clear .ui.segment:last-child, div#app .ui.cross-grid .ui.horizontal.seg
     margin-left: 16px;
 }
 
+div#factsTable {
+    margin-bottom: 0;
+}
+
+div#ownersTable {
+    margin-top: 15px;
+}
+
 /* Trends Area */
 
 div#trends-charts {
