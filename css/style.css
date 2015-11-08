@@ -768,6 +768,11 @@ div#fullChat {
     overflow: hidden;
 }
 
+div#app div#fullChat .ui.popup.very.wide.bottom.left.transition {
+    display: none!important;
+    visibility: hidden!important;
+}
+
 /****
 Listing cards
 ****/
