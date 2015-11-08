@@ -9,6 +9,7 @@ import TaxItem from './taxitem';
 import TaxDetails from './taxdetails';
 import Grid from './grid';
 import History from './history';
+import Comps from './comps';
 export default class Listings extends Component {
   constructor() {
     super();
@@ -153,7 +154,7 @@ export default class Listings extends Component {
       });
       $('.popup').popup();
       $('.dropdown').dropdown({
-        transition: 'drop'
+        transition: 'pulse'
       });
   }
 
@@ -212,6 +213,8 @@ export default class Listings extends Component {
           <div id="assessmentList">
             {assessmentList}
           </div>
+
+          <Comps />
         </div>
         <Modal style='standard' size='fullscreen' isOpened={state.isOpened} closeIcon onClose={this.close}>
           <div className='header'>
