@@ -69,50 +69,50 @@ export default class Message extends React.Component {
           $.getJSON( csUrl )
             .done(function( json ) {
               console.log(json);
-              // $(tag).html(`
-              //   <div class="listing ui card full">
-              //     <div class="image">
-              //       <img src="${json.bundle.media[0].url}">
-              //     </div>
-              //     <div class="content">
-              //       <a class="header">${json.bundle.address} - ${numeral(json.bundle.price).format('$0,0')}</a>
-              //       <div class="description">
-              //           <h5 class="header metadata">
-              //             <span>
-              //               Beds - ${json.bundle.bedrooms}
-              //             </span>
-              //             <span>
-              //               Baths - ${json.bundle.baths}
-              //             </span>
-              //           </h5>
-              //           ${json.bundle.publicRemarks}
-              //       </div>
-              //
-              //     </div>
-              //     <div class="extra content">
-              //       <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
-              //       <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
-              //   </div>
-              // </div>
-              // <div class="ui items listing tiny">
-              //   <div class="item">
-              //     <div class="ui small image">
-              //       <img src="${json.bundle.media[0].url}">
-              //     </div>
-              //     <div class="content">
-              //       <div class="header">${json.bundle.address}</div>
-              //       <div class="meta">
-              //         <span class="price">${numeral(json.bundle.price).format('$0,0')}</span>
-              //         <span class="stay">${json.bundle.bedrooms} bds ${json.bundle.baths} bths</span>
-              //       </div>
-              //       <div class="description">
-              //         <br />
-              //         <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
-              //         <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
-              //     </div>
-              //     </div>
-              //   </div>
-              //   `);
+              var prop = json.comingSoon[0];
+              console.log(prop.Photos);
+              $(tag).html(`
+                <div class="listing ui card full">
+                  <div class="image">
+                    <img src="https://lm4.mlslistings.com/comingsoon/photo/${prop.Photos[0]}">
+                  </div>
+                  <div class="content">
+                    <a class="header">${prop.StreetNumber} ${prop.StreetName} ${prop.CityPostalName} - ${numeral(prop.PreMarketPrice).format('$0,0')}</a>
+                    <div class="description">
+                        <h5 class="header metadata">
+                          <span>
+                            Beds - ${prop.BedsTotal}
+                          </span>
+                          <span>
+                            Baths - ${prop.BathsTotal}
+                          </span>
+                        </h5>
+                        ${prop.Comments}
+                    </div>
+
+                  </div>
+                  <div class="extra content">
+                    <img class="logo right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
+                </div>
+              </div>
+              <div class="ui items listing tiny">
+                <div class="item">
+                  <div class="ui small image">
+                    <img src="https://lm4.mlslistings.com/comingsoon/photo/${prop.Photos[0]}">
+                  </div>
+                  <div class="content">
+                    <div class="header">${prop.StreetNumber} ${prop.StreetName} ${prop.CityPostalName}</div>
+                    <div class="meta">
+                      <span class="price">${numeral(prop.PreMarketPrice).format('$0,0')}</span>
+                      <span class="stay">${prop.BedsTotal} bds ${prop.BathsTotal} bths</span>
+                    </div>
+                    <div class="description">
+                      <br />
+                      <img class="logo right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
+                  </div>
+                  </div>
+                </div>
+                `);
             })
             .fail(function( jqxhr, textStatus, error ) {
               var err = textStatus + ", " + error;
