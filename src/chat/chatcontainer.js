@@ -10,22 +10,26 @@ export default class Container extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      messages: [],
-      show: null
+      messages: []
     };
     this._init = this.init.bind(this);
 
   }
-  init(){
-    if(this.ref){
-       base.removeBinding(this.ref);
-    }
+
+  chatBase(){
     let chatBase = 'ChatRoom';
     let apn = Store.APN();
     if(apn){
       chatBase = 'history/' + apn + '/comments';
     }
-    this.ref = base.bindToState(chatBase, {
+    return chatBase;
+  }
+
+  init(){
+    if(this.ref){
+       base.removeBinding(this.ref);
+    }
+    this.ref = base.bindToState(this.chatBase(), {
        context: this,
        state: 'messages',
        asArray: true
@@ -47,17 +51,12 @@ export default class Container extends React.Component {
 
   _removeMessage(index, e){
     e.stopPropagation();
-    var arr = this.state.messages.concat([]);
-    arr.splice(index, 1);
-    this.setState({
-      messages: arr,
-      show: null
-    });
-  }
-
-  _toggleView(index){
-    this.setState({
-      show: index
+    this.state.messages.splice(index, 1);
+    base.post(this.chatBase(), {
+      data: this.state.messages,
+      context: this,
+      then: () => {
+      }
     });
   }
 
@@ -68,9 +67,7 @@ export default class Container extends React.Component {
       return (
         <Message
           thread={ item }
-          show={ this.state.show === index }
           removeMessage={ this._removeMessage.bind(this, index) }
-          handleClick={ this._toggleView.bind(this, index) }
           key={ index } />
       );
     });

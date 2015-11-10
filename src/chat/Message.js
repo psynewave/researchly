@@ -212,8 +212,7 @@ export default class Message extends React.Component {
     let message =  p.parse(props.thread.title);
 
     return (
-      <div className='comment' onClick={ props.handleClick.bind(null) } className={ props.show ? 'bg-warning' : 'bg-info'}>
-
+      <div className='comment'>
               <img className="ui avatar image" src={props.thread.avatar} alt={props.thread.name} />
               <div className="ui segment left pointing label">
                 <i onClick={ props.removeMessage.bind(null) } className="close icon"></i>

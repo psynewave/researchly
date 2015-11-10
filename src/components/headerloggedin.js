@@ -93,7 +93,7 @@ export default class Header extends React.Component {
                 <input autoComplete="off" ref="search" id="search" type="search" placeholder="Search" className="search-popup" data-html={popup}/>
                 <button className="ui primary button" type="Submit">
                   <i className="search icon"></i>
-                  Search
+                  Search Public Records
                 </button>
               </form>
             </div>
