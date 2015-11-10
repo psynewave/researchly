@@ -1,0 +1,17 @@
+{
+   "success":true,
+   "status":200,
+   "bundle":
+      {
+         "address":"337 Amaryllis TER SUNNYVALE CA 94086",
+         "price":"1023888",
+         "bedrooms":"3",
+         "baths":"2",
+         "publicRemarks":"New Construction! End unit with Large Deck. Jasmine Terrace is located in the ever growing living destination of Sunnyvale. Conveniently located near CalTrain, Downtown Sunnyvale, Central Expressway, and major freeways. No bidding, first come-first serve. Photos are of model home.",
+         "media":[
+            {
+               "url":"http://data.mlslistings.com/GetMedia.ashx?Q=UmVzb3VyY2U9UHJvcGVydHkmU291cmNlSUQ9ODE1MTQ4MzgmT2JqZWN0SUQ9MSZUeXBlPUhSUGhvdG8mVXNlcj1hbm9ueW1vdXM%3d&Hash=73fc718702e63e71077b3b2a7629c949"
+            }
+         ]
+      }
+}

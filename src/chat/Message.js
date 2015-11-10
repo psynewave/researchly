@@ -1,11 +1,14 @@
 import React  from 'react/addons';
 import Parser from 'simple-text-parser';
+import Constants from '../constants/consts';
+
 export default class Message extends React.Component {
   render(){
     let props = this.props;
     var p = new Parser();
     p.addRule(/\#mls[\S]+/ig, function(tag) {
-        let mlsUrl = `https://rets.io/api/v1/armls/listings/${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
+          //let mlsUrl = `https://rets.io/api/v1/armls/listings/${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
+          let mlsUrl = `${Constants.LISTINGS_URL}${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
           $.getJSON( mlsUrl )
             .done(function( json ) {
               $(tag).html(`
@@ -61,7 +64,9 @@ export default class Message extends React.Component {
     });
 
     p.addRule(/\#apn[\S]+/ig, function(tag) {
-        let apnUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&apn=${tag.split('#apn')[1]}`;
+        //let apnUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&apn=${tag.split('#apn')[1]}`;
+        let apn = tag.split('#apn')[1];
+        let apnUrl = Constants.PARCELS_URL;
           $.getJSON( apnUrl )
             .done(function( json ) {
               $(tag).html(`

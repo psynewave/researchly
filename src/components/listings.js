@@ -164,11 +164,13 @@ export default class Listings extends Component {
     let assessmentDetails = state.assessment ? state.assessment : null;
     let error = state.error ? state.error : null;
     let comps = state.comps;
+
     if(error){
       errorMessage = <div className="ui inverted red segment">
           <p>{state.error}</p>
       </div>
     }
+
     if(assessments){
       assessmentList = assessments.map((i, k) => {
         let selected = false;

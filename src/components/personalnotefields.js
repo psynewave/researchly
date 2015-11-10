@@ -118,8 +118,7 @@ export default class PersonalNotefields extends React.Component {
     let record = Object.keys(fields).map((k) => {
       let _class = "label tag ui orange";
 
-      if( _.where(comp_fields, {label: k}).length > 0 ||
-          fields[k]==null){
+      if( _.where(comp_fields, {label: k}).length > 0 ){
         _class += " hide";
       }
 
