@@ -63,6 +63,64 @@ export default class Message extends React.Component {
         return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
     });
 
+    p.addRule(/\#cs[\S]+/ig, function(tag) {
+          //let mlsUrl = `https://rets.io/api/v1/armls/listings/${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
+          let csUrl = `${Constants.COMING_SOON_URL}`;
+          $.getJSON( csUrl )
+            .done(function( json ) {
+              console.log(json);
+              // $(tag).html(`
+              //   <div class="listing ui card full">
+              //     <div class="image">
+              //       <img src="${json.bundle.media[0].url}">
+              //     </div>
+              //     <div class="content">
+              //       <a class="header">${json.bundle.address} - ${numeral(json.bundle.price).format('$0,0')}</a>
+              //       <div class="description">
+              //           <h5 class="header metadata">
+              //             <span>
+              //               Beds - ${json.bundle.bedrooms}
+              //             </span>
+              //             <span>
+              //               Baths - ${json.bundle.baths}
+              //             </span>
+              //           </h5>
+              //           ${json.bundle.publicRemarks}
+              //       </div>
+              //
+              //     </div>
+              //     <div class="extra content">
+              //       <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
+              //       <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
+              //   </div>
+              // </div>
+              // <div class="ui items listing tiny">
+              //   <div class="item">
+              //     <div class="ui small image">
+              //       <img src="${json.bundle.media[0].url}">
+              //     </div>
+              //     <div class="content">
+              //       <div class="header">${json.bundle.address}</div>
+              //       <div class="meta">
+              //         <span class="price">${numeral(json.bundle.price).format('$0,0')}</span>
+              //         <span class="stay">${json.bundle.bedrooms} bds ${json.bundle.baths} bths</span>
+              //       </div>
+              //       <div class="description">
+              //         <br />
+              //         <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
+              //         <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
+              //     </div>
+              //     </div>
+              //   </div>
+              //   `);
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+              var err = textStatus + ", " + error;
+              console.log( "Request Failed: " + err );
+          });
+        return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
+    });
+
     p.addRule(/\#apn[\S]+/ig, function(tag) {
         //let apnUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&apn=${tag.split('#apn')[1]}`;
         let apn = tag.split('#apn')[1];

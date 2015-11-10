@@ -5,6 +5,7 @@ export default {
   ASSESSMENTS_URL: 'https://rets.io/api/v1/pub/assessments?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10',
   TRENDS_URL : "https://mlspro.staging.mlslistings.com/odata/Growth/MarketTrends?$filter=Class%20eq%20%27Residential%20-%20Single%20Family%27",
   LISTINGS_URL: "https://rets.io/api/v1/armls/listings/",
+  COMING_SOON_URL: "https://lm4.mlslistings.com/ComingSoon/listings",
   // PARCELS_URL: './Portal/api/parcels.json',
   // TRANSACTIONS_URL : './Portal/api/transactions.json',
   // ASSESSMENTS_URL: './Portal/api/assessments.json',

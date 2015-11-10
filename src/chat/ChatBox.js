@@ -78,14 +78,18 @@ export default class ChatBox extends React.Component {
         <div id="chatPortal" className="row">
           <div id="chatRow" className="eight wide column chat">
             <div id="chatContainer" className="ui segments">
+              {chatLabel}
               <div id="innerChatContainer" className="ui segment">
-                {chatLabel}
                 <Container profile={props.profile} />
               </div>
             </div>
           </div>
           <div id="noteRow" className="eight wide column chat">
             <div id="noteContainer" className="ui segments">
+              <span id="paperLabel" className="ui orange ribbon label">
+                <i className="privacy icon"></i>
+                Private Notes
+              </span>
               <div id="innerNoteContainer" className="">
                 <NotePad profile={props.profile}/>
               </div>
