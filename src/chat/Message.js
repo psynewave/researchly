@@ -1,4 +1,4 @@
-import React  from 'react/addons';
+import React, { Component } from 'react';
 import Parser from 'simple-text-parser';
 import Constants from '../constants/consts';
 
@@ -7,27 +7,26 @@ export default class Message extends React.Component {
     let props = this.props;
     var p = new Parser();
     p.addRule(/\#mls[\S]+/ig, function(tag) {
-          //let mlsUrl = `https://rets.io/api/v1/armls/listings/${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
           let mlsUrl = `${Constants.LISTINGS_URL}${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
           $.getJSON( mlsUrl )
             .done(function( json ) {
               $(tag).html(`
                 <div class="listing ui card full">
                   <div class="image">
-                    <img src="${json.bundle.media[0].url}">
+                    <img src="${json.propertyDetailResults.hrImageList[0]}">
                   </div>
                   <div class="content">
-                    <a class="header">${json.bundle.address} - ${numeral(json.bundle.price).format('$0,0')}</a>
+                    <a class="header">${json.propertyDetailResults.propertyAddress}</a>
                     <div class="description">
                         <h5 class="header metadata">
                           <span>
-                            Beds - ${json.bundle.bedrooms}
+                            Beds - ${json.propertyDetailResults.beds}
                           </span>
                           <span>
-                            Baths - ${json.bundle.baths}
+                            Baths - ${json.propertyDetailResults.baths}
                           </span>
                         </h5>
-                        ${json.bundle.publicRemarks}
+                        <p>${json.propertyDetailResults.publicRemarks}</p>
                     </div>
 
                   </div>
@@ -39,18 +38,17 @@ export default class Message extends React.Component {
               <div class="ui items listing tiny">
                 <div class="item">
                   <div class="ui small image">
-                    <img src="${json.bundle.media[0].url}">
+                    <img src="${json.propertyDetailResults.thumbNailImageList[0]}">
                   </div>
                   <div class="content">
-                    <div class="header">${json.bundle.address}</div>
+                    <div class="header">${json.propertyDetailResults.propertyAddress}</div>
                     <div class="meta">
-                      <span class="price">${numeral(json.bundle.price).format('$0,0')}</span>
-                      <span class="stay">${json.bundle.bedrooms} bds ${json.bundle.baths} bths</span>
+                      <span class="price">${json.propertyDetailResults.formatedListSalePrice}</span>
+                      <span class="stay">${json.propertyDetailResults.beds} bds ${json.propertyDetailResults.baths} bths</span>
                     </div>
                     <div class="description">
                       <br />
-                      <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
-                      <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
+                      <img class="logo right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
                   </div>
                   </div>
                 </div>
@@ -64,7 +62,6 @@ export default class Message extends React.Component {
     });
 
     p.addRule(/\#cs[\S]+/ig, function(tag) {
-          //let mlsUrl = `https://rets.io/api/v1/armls/listings/${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
           let csUrl = `${Constants.COMING_SOON_URL}`;
           $.getJSON( csUrl )
             .done(function( json ) {
@@ -122,7 +119,6 @@ export default class Message extends React.Component {
     });
 
     p.addRule(/\#apn[\S]+/ig, function(tag) {
-        //let apnUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&apn=${tag.split('#apn')[1]}`;
         let apn = tag.split('#apn')[1];
         let apnUrl = Constants.PARCELS_URL;
           $.getJSON( apnUrl )
