@@ -1,6 +1,6 @@
 export default {
   TRENDS_URL : "https://mlspro.staging.mlslistings.com/odata/Growth/MarketTrends?$filter=Class%20eq%20%27Residential%20-%20Single%20Family%27",
-  PARCELS_URL: 'https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10',
+  PARCELS_URL: 'https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&landUseCode=rr',
   TRANSACTIONS_URL : 'https://rets.io/api/v1/pub/transactions?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10',
   ASSESSMENTS_URL: 'https://rets.io/api/v1/pub/assessments?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10',
   TRENDS_URL : "https://mlspro.staging.mlslistings.com/odata/Growth/MarketTrends?$filter=Class%20eq%20%27Residential%20-%20Single%20Family%27",

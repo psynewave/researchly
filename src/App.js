@@ -75,7 +75,13 @@ export default class App extends Component {
     if(token){
       this.lock.getProfile(token, function (err, profile) {
         if (err) {
-          console.log("Error loading the Profile", err);
+          //console.log("Error loading the Profile", err);
+          localStorage.removeItem('userToken');
+          this.setState({
+            profile: null,
+            idToken: null
+          });
+          return false;
         }
         this.setState({
           profile: profile

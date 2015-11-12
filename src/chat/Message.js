@@ -17,7 +17,6 @@ export default class Message extends React.Component {
                   <img src="${img}">
                 </div>`
               });
-              console.log(slider);
               $(tag).html(`
                 <div class="listing ui card full">
                   <div class="slick">
