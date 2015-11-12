@@ -20,7 +20,6 @@ export default class LoggedInContent extends React.Component {
 
   fullChat(){
     let state = this.state;
-        console.log('at');
     this.setState({
       fullsize: state.chatHidden ? false : state.fullsize ? false : true,
       chatHidden: false

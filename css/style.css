@@ -596,6 +596,10 @@ div#paperChat.fullChat .chat {
     height: 98%;
 }
 
+div#paperChat .comment {
+    margin-bottom: 20px;
+}
+
 div#detailChatHolder div#paperChat {
     position: relative;
 }
@@ -778,6 +782,44 @@ div#paperChat.fullChat div#chatWindow {
 
 .listing.ui.card img.logo.right {
     float: right;
+}
+
+.listing.card .image.slick-slide img {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.listing.card .slick-slider {
+  margin-bottom: 0;
+}
+
+button.slick-next.slick-arrow {
+    right: 0px;
+}
+
+button.slick-prev.slick-arrow {
+    left: 0;
+}
+
+button.slick-arrow {
+    background: ghostwhite;
+    height: 100%;
+    top: 10px;
+    box-sizing: border-box;
+    width: 30px;
+    cursor: pointer;
+    z-index: 9;
+}
+
+button.slick-arrow:hover {
+    background: #2185D0;
+}
+
+
+
+.slick.slick-initialized.slick-slider {
+    position: relative;
+    overflow: hidden;
 }
 
 /*******************************

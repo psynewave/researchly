@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Parser from 'simple-text-parser';
 import Constants from '../constants/consts';
+import 'imports?$=jquery,jQuery=jquery!../../css/slick/slick.min.js';
 
 export default class Message extends React.Component {
   render(){
@@ -10,10 +11,17 @@ export default class Message extends React.Component {
           let mlsUrl = `${Constants.LISTINGS_URL}${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
           $.getJSON( mlsUrl )
             .done(function( json ) {
+              var slider = '';
+              $(json.propertyDetailResults.hrImageList).each(function(i, img){
+                slider += `<div class="image">
+                  <img src="${img}">
+                </div>`
+              });
+              console.log(slider);
               $(tag).html(`
                 <div class="listing ui card full">
-                  <div class="image">
-                    <img src="${json.propertyDetailResults.hrImageList[0]}">
+                  <div class="slick">
+                    ${slider}
                   </div>
                   <div class="content">
                     <a class="header">${json.propertyDetailResults.propertyAddress}</a>
@@ -31,8 +39,7 @@ export default class Message extends React.Component {
 
                   </div>
                   <div class="extra content">
-                    <img class="logo left" src="./Portal/images/retsly-logo.png" width="80px"/>
-                    <img class="logo right" src="./Portal/images/armls-logo.gif" width="80px"/>
+                    <img class="logo right" src="./Portal/images/mlslistings-logo.png" width="80px"/>
                 </div>
               </div>
               <div class="ui items listing tiny">
@@ -53,6 +60,9 @@ export default class Message extends React.Component {
                   </div>
                 </div>
                 `);
+                $('.slick').slick({
+                  adaptiveHeight: true
+                });
             })
             .fail(function( jqxhr, textStatus, error ) {
               var err = textStatus + ", " + error;
@@ -65,9 +75,7 @@ export default class Message extends React.Component {
           let csUrl = `${Constants.COMING_SOON_URL}`;
           $.getJSON( csUrl )
             .done(function( json ) {
-              console.log(json);
               var prop = json.comingSoon[0];
-              console.log(prop.Photos);
               $(tag).html(`
                 <div class="listing ui card full">
                   <div class="image">
