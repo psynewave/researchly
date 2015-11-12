@@ -9,6 +9,7 @@ export default class Message extends React.Component {
     var p = new Parser();
     p.addRule(/\#mls[\S]+/ig, function(tag) {
           let mlsUrl = `${Constants.LISTINGS_URL}${tag.split('#mls')[1]}?access_token=43224a475a157d1286c4b16dc75d5a7c`;
+          let uniqueKey = _.uniqueId('ml');
           $.getJSON( mlsUrl )
             .done(function( json ) {
               var slider = '';
@@ -17,9 +18,9 @@ export default class Message extends React.Component {
                     <img class="ui centered image slick-image" data-lazy="${img}">
                 </div>`
               });
-              $(tag).html(`
+              $(`${tag}-${uniqueKey}`).html(`
                 <div class="listing ui card full">
-                  <div id="${json.propertyDetailResults.MLSNumber}" class="slick">
+                  <div id="${uniqueKey}-${json.propertyDetailResults.MLSNumber}" class="slick">
                     ${slider}
                   </div>
                   <div class="content">
@@ -59,7 +60,7 @@ export default class Message extends React.Component {
                   </div>
                 </div>
                 `);
-                $(`#${json.propertyDetailResults.MLSNumber}`).slick({
+                $(`#${uniqueKey}-${json.propertyDetailResults.MLSNumber}`).slick({
                   lazyLoad: 'ondemand',
                   slidesToShow: 1,
                   fade: true,
@@ -72,7 +73,7 @@ export default class Message extends React.Component {
               var err = textStatus + ", " + error;
               console.log( "Request Failed: " + err );
           });
-        return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
+        return `<span id="${tag.substr(1)}-${uniqueKey}">${tag.substr(1)}</span>`;
     });
 
     p.addRule(/\#cs[\S]+/ig, function(tag) {
@@ -134,9 +135,10 @@ export default class Message extends React.Component {
         let apn = tag.split('#apn')[1];
         //let apnUrl = Constants.PARCELS_URL;
         let apnUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&apn=${tag.split('#apn')[1]}`;
+        let uniqueKey = _.uniqueId('apn');
           $.getJSON( apnUrl )
             .done(function( json ) {
-              $(tag).html(`
+              $(`${tag}-${uniqueKey}`).html(`
                 <div class="apnTable">
                   <table class="ui fixed single striped line celled table center aligned">
                     <thead>
@@ -197,14 +199,15 @@ export default class Message extends React.Component {
               var err = textStatus + ", " + error;
               console.log( "Request Failed: " + err );
           });
-        return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
+        return `<span id="${tag.substr(1)}-${uniqueKey}">${tag.substr(1)}</span>`;
     });
 
     p.addRule(/\#trends[\S]+/ig, function(tag) {
         let trendsUrl = `https://mlspro.staging.mlslistings.com/odata/Growth/MarketTrends?$filter=Class%20eq%20%27Residential%20-%20Single%20Family%27%20and%20PeriodType%20eq%20%27Year%27%20and%20Period%20eq%20%272015%27and%20GeographyType%20eq%20%27Zip%27%20and%20GeographyName%20eq%20%27${tag.split('#trends')[1]}%27`;
+        let uniqueKey = _.uniqueId('tr');
           $.getJSON( trendsUrl )
             .done(function( json ) {
-              $(tag).html(`
+              $(`${tag}-${uniqueKey}`).html(`
                 <div class="trends ui">
                   <div class="ui segments">
                     <div class="ui">
@@ -272,7 +275,7 @@ export default class Message extends React.Component {
               var err = textStatus + ", " + error;
               console.log( "Request Failed: " + err );
           });
-        return `<span id="${tag.substr(1)}">${tag.substr(1)}</span>`;
+        return `<span id="${tag.substr(1)}-${uniqueKey}">${tag.substr(1)}</span>`;
     });
 
 
