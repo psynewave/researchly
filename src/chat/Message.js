@@ -67,7 +67,6 @@ export default class Message extends React.Component {
                   prevArrow: '<button type="button" class="slick-prev"><i class="chevron circle left icon"></i></button>',
                   nextArrow: '<button type="button" class="slick-next"><i class="chevron circle right icon"></i></button>'
                 });
-                console.log($(`#${json.propertyDetailResults.MLSNumber}`).find('.slick-list.draggable').attr('height'));
             })
             .fail(function( jqxhr, textStatus, error ) {
               var err = textStatus + ", " + error;
