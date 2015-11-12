@@ -128,7 +128,8 @@ export default class Message extends React.Component {
 
     p.addRule(/\#apn[\S]+/ig, function(tag) {
         let apn = tag.split('#apn')[1];
-        let apnUrl = Constants.PARCELS_URL;
+        //let apnUrl = Constants.PARCELS_URL;
+        let apnUrl = `https://rets.io/api/v1/pub/parcels?access_token=43224a475a157d1286c4b16dc75d5a7c&limit=10&apn=${tag.split('#apn')[1]}`;
           $.getJSON( apnUrl )
             .done(function( json ) {
               $(tag).html(`

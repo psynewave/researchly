@@ -18,8 +18,8 @@ window.$ = $;
 window.jQuery = $;
 window._ = _;
 
-//prevent caching of api data
-$.ajaxSetup({ cache: false });
+//prevent caching of api data Retsly doesn't like this setting.
+//$.ajaxSetup({ cache: false });
 
 export default class App extends Component {
   constructor() {
