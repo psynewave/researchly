@@ -907,7 +907,9 @@ h5.trendLabel.header {
 }
 
 div#chatWindow .label .close {
-    float: right;
+    position: absolute;
+    right: 1px;
+    top: 2px;
 }
 
 div#paperChat.fullChat .ui.items.listing.tiny {
