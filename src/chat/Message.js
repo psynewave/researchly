@@ -13,13 +13,13 @@ export default class Message extends React.Component {
             .done(function( json ) {
               var slider = '';
               $(json.propertyDetailResults.hrImageList).each(function(i, img){
-                slider += `<div class="image">
-                  <img src="${img}">
+                slider += `<div class="ui segment basic">
+                    <img class="ui centered image slick-image" data-lazy="${img}">
                 </div>`
               });
               $(tag).html(`
                 <div class="listing ui card full">
-                  <div class="slick">
+                  <div id="${json.propertyDetailResults.MLSNumber}" class="slick">
                     ${slider}
                   </div>
                   <div class="content">
@@ -59,9 +59,15 @@ export default class Message extends React.Component {
                   </div>
                 </div>
                 `);
-                $('.slick').slick({
-                  adaptiveHeight: true
+                $(`#${json.propertyDetailResults.MLSNumber}`).slick({
+                  lazyLoad: 'ondemand',
+                  slidesToShow: 1,
+                  fade: true,
+                  cssEase: 'linear',
+                  prevArrow: '<button type="button" class="slick-prev"><i class="chevron circle left icon"></i></button>',
+                  nextArrow: '<button type="button" class="slick-next"><i class="chevron circle right icon"></i></button>'
                 });
+                console.log($(`#${json.propertyDetailResults.MLSNumber}`).find('.slick-list.draggable').attr('height'));
             })
             .fail(function( jqxhr, textStatus, error ) {
               var err = textStatus + ", " + error;

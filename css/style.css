@@ -780,29 +780,29 @@ div#paperChat.fullChat div#chatWindow {
     width: 60px;
 }
 
-.listing.ui.card img.logo.right {
+div#paperChat.fullChat .listing.ui.card img.logo.right {
     float: right;
 }
 
-.listing.card .image.slick-slide img {
+div#paperChat.fullChat .listing.card .image.slick-slide img {
     width: 700px;
     margin: 0 auto;
 }
 
-.listing.card .slick-slider {
+div#paperChat.fullChat .listing.card .slick-slider {
   margin-bottom: 0;
 }
 
-button.slick-next.slick-arrow {
+div#paperChat.fullChat button.slick-next.slick-arrow {
     right: 0px;
 }
 
-button.slick-prev.slick-arrow {
+div#paperChat.fullChat button.slick-prev.slick-arrow {
     left: 0;
 }
 
-button.slick-arrow {
-    background: ghostwhite;
+div#paperChat.fullChat button.slick-arrow {
+    /*background: ghostwhite;*/
     height: 100%;
     top: 10px;
     box-sizing: border-box;
@@ -811,16 +811,49 @@ button.slick-arrow {
     z-index: 9;
 }
 
-button.slick-arrow:hover {
-    background: #2185D0;
+div#paperChat.fullChat button.slick-arrow:hover {
+    /*background: #2185D0;*/
 }
 
+div#paperChat.fullChat button.slick-arrow i {
+    font-size: 25px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    text-shadow: 1px 1px rgba(0,0,0,.5);
+}
 
+div#paperChat.fullChat .slick-prev:before, div#paperChat.fullChat .slick-next:before{
+    display: none;
+}
 
-.slick.slick-initialized.slick-slider {
+div#paperChat.fullChat button.slick-next.slick-arrow i {
+    right: 10px;
+}
+
+div#paperChat.fullChat .slick.slick-initialized.slick-slider {
     position: relative;
     overflow: hidden;
 }
+
+div#paperChat.fullChat .ui.segment.basic.slick-slide {
+    /* background: oldlace; */
+    margin: 0 auto;
+    height: 440px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div#paperChat.fullChat .ui.segment.basic.slick-slide img.ui.centered.image.slick-image {
+    margin: 0 auto;
+    max-height: 450px;
+}
+
+/*div#paperChat.fullChat .slick-initialized .slick-slide {
+    margin-left: 7px;
+}*/
 
 /*******************************
   Setting overflow off in app body
@@ -844,7 +877,7 @@ Listing cards
     width: 100%;
 }
 
-.listing.card .image {
+.listing.card .image.not(.slick-image) {
     width: 100%;
 }
 
@@ -854,7 +887,7 @@ div#chatWindow .label {
 }
 
 div#chatWindow .trends.ui {
-    width: 95%;
+    width: 100%;
 }
 
 .trendIcon {
@@ -887,7 +920,10 @@ div#paperChat.fullChat .ui.items.listing.tiny {
 
 div#paperChat.fullChat .listing.ui.card.full {
     display: block;
-    width: 95%;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    min-height: 670px;
 }
 
 /**

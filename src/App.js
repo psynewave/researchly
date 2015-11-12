@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import _ from 'underscore';
 import 'imports?$=jquery,jQuery=jquery!../css/semantic/semantic.min.js';
+import '../css/slick/slick.min.css';
+import '../css/slick/slick-theme.min.css';
 import '../css/style.css';
 import React, { Component } from 'react';
 import Actions from './actions/appActions';
