@@ -56,7 +56,7 @@ export default class Trends extends React.Component {
     return (
         <div className="ui slider range">
           <Segments styles="clear basic">
-            <Segment styles="basic left floated no-padding-left no-padding-bottom">
+            <Segment styles="hide basic left floated no-padding-left no-padding-bottom">
               <input id="drillLevel" ref="drillLevel" type="range" min="1" max="3" defaultValue={state.level} onChange={this.drillDown} />
             </Segment>
             <Segment styles="basic right floated no-padding-right no-margin-right no-padding-bottom">

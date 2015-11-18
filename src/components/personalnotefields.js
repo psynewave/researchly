@@ -21,7 +21,6 @@ export default class PersonalNotefields extends React.Component {
 
   init() {
     let apn = this.props.state.apn;
-    console.log(apn);
     let notes = Store.Notes().slice();
     let noteIndex = _.findLastIndex(notes, {'apn':apn});
     if( noteIndex >= 0 ){

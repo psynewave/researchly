@@ -19,7 +19,7 @@ export default class TaxItem extends React.Component {
             {state.apn}
           </h5>
           <div className="title left">
-            <i className="dropdown icon"></i>
+            <i className="plus orange icon"></i>
           </div>
           <div className="content">
             <table className="ui fixed single striped line celled table center aligned">

@@ -76,7 +76,7 @@ export default class Container extends React.Component {
       <span id="chatRail">
       <div id="chatBody" className='ui segment'>
         <div id="chatHeader" className="ui">
-          <div className="messageCount ui blue circular label">{ (this.state.messages.length || 0) }</div>
+          <div className="messageCount ui blue circular label hide">{ (this.state.messages.length || 0) }</div>
         </div>
         <div id="chatWindow" className="ui">
           { messages }

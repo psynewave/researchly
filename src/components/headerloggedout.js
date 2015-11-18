@@ -15,7 +15,8 @@ export default class Header extends React.Component {
       <header className="logged-out">
         <div className="ui container">
           <h2 id="bigLogo" className="ui center aligned icon header">
-            <i className="circular line chart icon"></i>
+            <i className="circular line chart icon hide"></i>
+            <img id="bigLogoImage" className="ui small circular" src="../../Portal/images/researchly-logo.png" />
             {props.appName}
           </h2>
           <div className="ui text grid container">

@@ -66,7 +66,7 @@ export default class Header extends React.Component {
     if(profile){
       avatar = <div className="ui medium list avatar">
         <div className="item">
-          <img className="ui avatar image" src={profile.picture} />
+          <img className="ui avatar image right" src={profile.picture} />
           <div className="content">
             <div className="header no-padding">{profile.name}</div>
           </div>
@@ -82,28 +82,25 @@ export default class Header extends React.Component {
       <header className="collapsed">
         <div>
           <div className="ui grid inverted menu no-margin-top no-border-radius">
-            <div id="smallLogo" className="one wide column">
+            <div id="smallLogo" className="four wide column">
               <h2 className="ui icon header floated left no-margin-top no-margin-left no-padding-top no-padding-bottom">
-                <i id="smallLogoIcon" className="circular line chart icon float left no-padding-top no-padding-bottom"></i>
-                <div id="smallLogoHeader" className="hide ui sub header no-margin-top no-margin-left">{props.appName}</div>
+                <i id="smallLogoIcon" className="circular line chart icon float left no-padding-top no-padding-bottom hide"></i>
+                <img id="smallLogoImage" className="ui small circular" src="../../Portal/images/researchly-logo.png" />
+                <div id="smallLogoHeader" className="ui sub header no-margin-top no-margin-left">{props.appName}</div>
               </h2>
             </div>
-            <div id="search-form" className="twelve wide column">
+            <div id="search-form" className="nine wide column">
               <form id="search-bar" className="ui fluid action large input" onSubmit={this._search} autoComplete="off">
-                <input autoComplete="off" ref="search" id="search" type="search" placeholder="Search" className="search-popup" data-html={popup}/>
-                <button className="ui primary button" type="Submit">
+                <input autoComplete="off" ref="search" id="search" type="search" placeholder="Search" className="search-popup no-border-radius" data-html={popup}/>
+                <button className="ui light-orange button no-border-radius" type="Submit" id="searchButton">
                   <i className="search icon"></i>
-                  Search Public Records
                 </button>
               </form>
             </div>
-            <div className="three wide column">
+            <div id="userInfo" className="three wide column">
                   {avatar}
             </div>
           </div>
-          <h2 className="ui header search-header">
-             {heading}
-          </h2>
         </div>
       </header>
     );

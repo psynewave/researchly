@@ -30,10 +30,12 @@ export default class NewChat extends React.Component {
   render(){
     return (
         <form onSubmit={ this._newChat.bind(this) }>
-          <div className="ui fluid action input">
-            <input ref="title" placeholder="Message" type="search" placeholder="Send" />
-            <button className="ui button primary" type="submit">Submit</button>
+          <div className="ui fluid left icon right action input">
+            <input className="no-border-radius" ref="title" placeholder="Write a community note..." type="search" />
+            <i className="users icon"></i>
+            <button className="ui button light-orange no-border-radius chatbutton" type="submit">SUBMIT</button>
           </div>
+
         </form>
     )
   }

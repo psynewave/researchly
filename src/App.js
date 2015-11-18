@@ -111,7 +111,7 @@ export default class App extends Component {
 
     if (state.idToken) {
       contentView = <div>
-        <LoggedInContent state={this.state} profile={state.profile} login={this.showLock}/>
+        <LoggedInContent state={this.state} profile={state.profile} login={this.showLock} appName={state.appName}/>
         </div>
     } else {
       contentView = <div>

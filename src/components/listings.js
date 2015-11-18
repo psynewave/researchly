@@ -8,8 +8,10 @@ import Modal from './modal';
 import TaxItem from './taxitem';
 import TaxDetails from './taxdetails';
 import Grid from './grid';
-import History from './history';
 import Comps from './comps';
+import AppBar from './appbar.js';
+import History from './history';
+
 export default class Listings extends Component {
   constructor() {
     super();
@@ -63,6 +65,19 @@ export default class Listings extends Component {
     });
   }
 
+  historyOpen(){
+    this.setState({
+      historyOpen: true
+    });
+  }
+
+  historyClosed(){
+    //console.log('close');
+    this.setState({
+      historyOpen: false
+    });
+  }
+
   selectComp(e) {
     let state = this.state;
     let apn = String($(e.target).parents('.taxitem').data('apn'));
@@ -102,19 +117,6 @@ export default class Listings extends Component {
     Actions.setComps(comps);
   }
 
-  historyOpen(){
-    this.setState({
-      historyOpen: true
-    });
-  }
-
-  historyClosed(){
-    console.log('close');
-    this.setState({
-      historyOpen: false
-    });
-  }
-
   setParcels(){
     this.setState({
       parcels: Store.Parcels()
@@ -151,13 +153,11 @@ export default class Listings extends Component {
         }
       });
       $('.popup').popup();
-      $('.dropdown').dropdown({
-        transition: 'pulse'
-      });
   }
 
   render() {
     let state = this.state, parcelList, assessmentList, detailItem, errorMessage;
+    let props = this.props;
     let assessments = state.assessments ? state.assessments : null;
     let parcels = state.parcels ? state.parcels : null;
     let details = state.parcel ? state.parcel : null;
@@ -187,27 +187,26 @@ export default class Listings extends Component {
     }
 
     if(assessmentDetails){
-      detailItem = <TaxDetails id="taxDetails" state={state.assessment} />;
+      detailItem = <TaxDetails id="taxDetails" state={state.assessment} toggleChat={this.close} fullChat={props.fullChat} />;
     }
 
     return (
     <div>
         <div>
+          <div id="assessmentErrors">
+            {errorMessage}
+          </div>
+
           <div id="historyList" className={state.historyOpen ? "historyOpen" : ""}>
             <div id="historyOuterContainer" className="ui text menu">
-              <div id="historyInnerContainer" className="ui right dropdown item">
-                <div id="historyMenuLabel">History</div>
-                <i className="dropdown icon floated right"></i>
+              <div id="historyInnerContainer" className="ui left dropdown item">
+                <i className="star right blue icon"></i>
                 <div id="historyMenu" className="menu">
                   <i id="dismissHistory" className="close icon" onClick={this.historyClosed}></i>
                   <History historyOpen={this.historyOpen} click={this.open} />
                 </div>
               </div>
             </div>
-
-          </div>
-          <div id="assessmentErrors">
-            {errorMessage}
           </div>
 
           <Comps />

@@ -9,7 +9,7 @@ export default class NotesList extends React.Component{
       <div id="noteBody" className='ui segment'>
         <div id="noteHeader" className="ui">
           <div className="header attached light-grey"> </div>
-          <div className="messageCount ui orange circular label">{ (notes.length || 0) }</div>
+          <div className="messageCount ui orange circular label hide">{ (notes.length || 0) }</div>
         </div>
         <div id="noteWindow" className="ui">
           {notes}

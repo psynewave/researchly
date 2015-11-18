@@ -22,7 +22,6 @@ export default class NotePad extends React.Component{
     }
     if(this.props.profile){
       let noteBase = this.props.profile.user_id.split("|")[1];
-      console.log(noteBase);
       let apn = Store.APN();
       if(apn){
         noteBase =  'history/' + apn + '/' + noteBase;

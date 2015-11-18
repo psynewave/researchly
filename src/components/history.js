@@ -33,9 +33,10 @@ export default class Listings extends Component {
   }
 
   showCard(e){
-    let apn = $(e.target).text();
+    let apn = $(e.target).parents('.history.item').data('apn');
     let props = this.props;
-    this.apn=apn;
+
+    this.apn = apn;
     this.setState({
       apn:apn
     });
