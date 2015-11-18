@@ -400,12 +400,13 @@ div#trendsViewAppBar {
 
 .appBar i.active {
     background: white;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 3px solid;
     text-align: center;
-    padding-top: 7px;
+    padding-top: 2px;
     border-radius: 100%;
+    font-size: 1em;
 }
 
 .app.body .appBar .column {
@@ -759,6 +760,7 @@ div#paperChat.fullChat .chat {
 div#paperChat .comment {
     margin-bottom: 20px;
     position: relative;
+    width: 99%;
 }
 
 div#detailChatHolder div#paperChat {
@@ -1016,7 +1018,7 @@ div#paperChat.fullChat .slick.slick-initialized.slick-slider {
 div#paperChat.fullChat .ui.segment.basic.slick-slide {
     /* background: oldlace; */
     margin: 0 auto;
-    height: 440px;
+    /*height: 440px;*/
     padding: 0;
     display: flex;
     align-items: center;
@@ -1113,7 +1115,7 @@ div#paperChat.fullChat .listing.ui.card.full {
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
-    min-height: 670px;
+    min-height: 580px;
 }
 
 /**

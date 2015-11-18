@@ -40,12 +40,12 @@ export default class ChatBox extends React.Component {
     if(apn){
       chatLabel = <span id="paperLabel" className="ui">
         <i className="home icon hide"></i>
-        {apn} Notes
+        {apn} Hub
       </span>
     } else {
       chatLabel = <span id="paperLabel" className="ui">
         <i className="users icon hide"></i>
-        Community Notes
+        Community Hub
       </span>
     }
 
